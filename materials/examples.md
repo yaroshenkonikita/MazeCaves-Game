@@ -1,6 +1,6 @@
-# Примеры лабиринтов
+# Examples of mazes
 
-## Пример 1
+## Example 1
 
 ```
 10 10
@@ -27,9 +27,9 @@
 1 1 1 1 1 1 1 1 1 1
 ```
 
-<img src="../misc/images/maze.jpg" width="400"/>
+![maze](../misc/images/maze.jpg)
 
-## Пример 2
+## Example 2
 
 ```
 10 10
@@ -56,9 +56,9 @@
 1 1 1 1 1 1 1 1 1 1
 ```
 
-<img src="../misc/images/maze10.jpg" width="400"/>
+![maze10](../misc/images/maze10.jpg)
 
-## Пример 3
+## Example 3
 
 ```
 20 20
@@ -105,4 +105,4 @@
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 
-<img src="../misc/images/maze20.jpg" width="400"/>
+![maze20](../misc/images/maze20.jpg)
