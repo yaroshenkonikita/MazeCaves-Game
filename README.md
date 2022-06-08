@@ -19,6 +19,8 @@ The russian version of the task can be found in the repository.
 
 ## Chapter I
 
+![Maze](misc/images/A1_Maze.JPG)
+
 Eve approached the head's office just as the familiar, muted shouting emerged out of it:
 
 `-` How…think of opening …cess to the INTERNET to thes..vers?! And most importantly why …ns?!
@@ -166,7 +168,7 @@ A maze is considered perfect if it is possible to get from each point to any oth
 Add the ability to show the solution to _any_ maze currently shown on the screen:
 - The user sets the starting and ending points
 - The route, which is the solution, must be displayed with a line 2 pixel thick, passing through the middle of all the cells in the maze through which the solution runs.
-- The color of the solution line must be different from the color of the walls and the field
+- The color of the solution line must be different from the color of the walls, and the field
 - Prepare full coverage of the maze solving module with unit-tests
 
 ## Part 4. Cave Generation
