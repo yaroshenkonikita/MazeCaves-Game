@@ -143,6 +143,7 @@ See materials for more examples of cave descriptions.
 You need to implement a Maze program that can generate and render perfect mazes and caves:
 - The program must be developed in C++ language of C++17 standard
 - The program code must be located in the src folder
+- When writing code it is necessary to follow the Google style
 - The program must be built with Makefile which contains standard set of targets for GNU-programs: all, install, uninstall, clean, dvi, dist, tests. Installation directory could be arbitrary, except the building one
 - GUI implementation, based on any GUI library with API for C++17: Qt, SFML, GTK+, Nanogui, Nngui, etc.
 - The program has a button to load the maze from a file, which is set in the format described [above](#maze-description)
@@ -173,7 +174,7 @@ Add the ability to show the solution to _any_ maze currently shown on the screen
 
 ## Part 4. Cave Generation
 
-Add cave generation [using cellular automaton] (#generation-using-a-cellular-automaton):
+Add cave generation [using a cellular automaton](#generation-using-a-cellular-automaton):
 - The user selects the file that describes the cave according to the format described [above](#caves-description)
 - Use a separate window or tab in the user interface to display the caves
 - Maximum size of the cave is 50 x 50
