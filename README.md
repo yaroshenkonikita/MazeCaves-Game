@@ -14,7 +14,7 @@ The russian version of the task can be found in the repository.
    3.1. [Part 1](#part-1-implementation-of-the-maze-project) \
    3.2. [Part 2](#part-2-generation-of-a-perfect-maze) \
    3.3. [Part 3](#part-3-solving-the-maze) \
-   3.4. [Part 4](#part-4-cave-generation)
+   3.4. [Part 4](#part-4-bonus-cave-generation)
 
 
 ## Chapter I
@@ -172,7 +172,7 @@ Add the ability to show the solution to _any_ maze currently shown on the screen
 - The color of the solution line must be different from the color of the walls, and the field
 - Prepare full coverage of the maze solving module with unit-tests
 
-## Part 4. Cave Generation
+## Part 4. Bonus. Cave Generation
 
 Add cave generation [using a cellular automaton](#generation-using-a-cellular-automaton):
 - The user selects the file that describes the cave according to the format described [above](#caves-description)
