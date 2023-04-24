@@ -1,3 +1,6 @@
+#ifndef MATRIX_OOP
+#define MATRIX_OOP
+
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
@@ -96,3 +99,5 @@ class Matrix {
 
   friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 };
+
+#endif // MATRIX_OOP
