@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
+#include <iostream>
 
 class Matrix {
  public:
@@ -93,4 +94,5 @@ class Matrix {
   // Check on equal size
   void CheckEqSize(const Matrix &other) const;
 
+  friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 };

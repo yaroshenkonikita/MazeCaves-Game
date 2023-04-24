@@ -1,26 +1,17 @@
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <memory>
-#include <random>
+#include "maze.h"
 
-struct Cell {
-    bool right_wall_{};
-    bool bottom_wall_{};
-};
-
-std::vector<std::vector<Cell>> generateMaze(int width, int height) {
+Matrix &Maze::GenerateMaze(int height, int width) {
     // initialization the maze
-    std::vector<std::vector<Cell>> maze(height, std::vector<Cell>(width));
+    matrix_.Set(height, width);
 
     // initialization right and bottom walls 
     for (int row = 0; row < height; ++row) {
         for (int col = 0; col < width; ++col) {
             if (col == width - 1) {
-                maze[row][col].right_wall_ = true;
+                matrix_(row, col) += rigthWall;
             }
             if (row == height - 1) {
-                maze[row][col].bottom_wall_ = true;
+                matrix_(row, col) += bottomWall;
             }
         }
     }
@@ -33,24 +24,26 @@ std::vector<std::vector<Cell>> generateMaze(int width, int height) {
     int set = 1;
 
     std::random_device rd;
-    std::mt19937 mt(rd());
+    std::default_random_engine mt(rd());
 
     std::uniform_int_distribution<int> dist(0, 2);
 
-    for (int row = 0; row < height; ++row) {
+    for (int row = 0; row < height - 1; ++row) {
         
         // join cells not members of a set to their own unique set
-        for (int col = 0; col < width; ++col)
-            if (row_set[col] == 0) 
-                row_set[col] = set++;
+        for (int col = 0; col < width; ++col) {
+            if (row_set[col] == 0) {
+                row_set[col] = set++;                
+            }
+        }
 
         
         // create right walls
         for (int col = 0; col < width - 1; ++col) {
             const auto right_wall = dist(mt);
 
-            if ((right_wall == 1) || (row_set[col] == row_set[col + 1])) {
-                maze[row][col].right_wall_ = true;
+            if ((right_wall) || (row_set[col] == row_set[col + 1])) {
+                matrix_(row, col) += rigthWall;
             } else {
                 const auto changing_set = row_set[col + 1];
                 for (int i = 0; i < width; ++i) {
@@ -71,8 +64,8 @@ std::vector<std::vector<Cell>> generateMaze(int width, int height) {
                     count_current_set++;
                 }
             }
-            if ((bottom_wall == 1) && (count_current_set != 1)) {
-                maze[row][col].bottom_wall_ = true;
+            if ((bottom_wall) && (count_current_set != 1)) {
+                matrix_(row, col) += bottomWall;
             }
         }
 
@@ -80,85 +73,102 @@ std::vector<std::vector<Cell>> generateMaze(int width, int height) {
             for (int col = 0; col < width; ++col) {
                 unsigned count_hole = 0;
                 for (int i = 0; i < width; ++i) {
-                    if ((row_set[i] == row_set[col]) && (maze[row][i].bottom_wall_ == false)) {
+                    if ((row_set[i] == row_set[col]) && (matrix_(row, i) < bottomWall)) {
                         count_hole++;
                     }
                 }
-                if (count_hole == 0) {
-                    maze[row][col].bottom_wall_ = false;
+                if (count_hole == 0 && matrix_(row, col) >= bottomWall) {
+                    matrix_(row, col) -= bottomWall;
                 }
             }
         }
 
         // create a new row
         if (row != height - 1) {
-            // copy previous row
-            // maze[row + 1] = maze[row];
-
             for (int col = 0; col < width; ++col) {
-                if (maze[row][col].bottom_wall_ == true) {
+                if (matrix_(row, col) >= bottomWall) {
                     row_set[col] = 0;
                 }
-                // if (col < width - 1)
-                //     maze[row + 1][col].right_wall_ = false;
-                // if (row < height - 1)
-                //     maze[row + 1][col].bottom_wall_ = false;
             }
         }
+    }
 
-        if (row == height - 1) {
-            for (int col = 0; col < width - 1; ++col) {
-                if (row_set[col] != row_set[col + 1]) {
-                    maze[row][col].right_wall_ = false;
+    // join cells not members of a set to their own unique set
+    for (int col = 0; col < width; ++col) {
+        if (row_set[col] == 0) {
+            row_set[col] = set++;                
+        }
+    }
+
+    // create right walls
+    for (int col = 0; col < width - 1; ++col) {
+        const auto right_wall = dist(mt);
+
+        if ((right_wall) || (row_set[col] == row_set[col + 1])) {
+            matrix_(height - 1, col) += rigthWall;
+        } else {
+            const auto changing_set = row_set[col + 1];
+            for (int i = 0; i < width; ++i) {
+                if (row_set[i] == changing_set) {
+                    row_set[i] = row_set[col];
                 }
             }
         }
-
     }
-    // for (int row = 0; row < height; ++row) {
-    //     for (int col = 0; col < width; ++col) {
-    //         // if (col == width - 1) {
-    //         //     maze[row][col].right_wall_ = true;
-    //         // }
-    //         if (row == height - 1) {
-    //             maze[row][col].bottom_wall_ = true;
-    //         }
-    //     }
-    // }
-    return maze;
+
+    for (int col = 0; col < width - 1; ++col) {
+        if (row_set[col] != row_set[col + 1] && matrix_(height - 1, col) >= rigthWall) {
+            matrix_(height - 1, col) -= rigthWall;
+            const auto changing_set = row_set[col + 1];
+            for (int i = 0; i < width; ++i) {
+                if (row_set[i] == changing_set) {
+                    row_set[i] = row_set[col];
+                }
+            }
+        }
+    }
+
+    for (int col = 0; col < width - 1; ++col) {
+        if (row_set[col] != row_set[col + 1] && matrix_(height - 1, col) >= rigthWall) {
+            matrix_(height - 1, col) -= rigthWall;
+        }
+    }
+
+    return matrix_;
 }
 
-void printMaze(std::vector<std::vector<Cell>> maze) {
-    std::cout << "Right walls:" << std::endl;
-    for (int i = 0; i < maze.size(); ++i) {
-        for (int j = 0; j < maze[i].size(); ++j) {
-            std::cout << maze[i][j].right_wall_;
+// void printMaze(std::vector<std::vector<Cell>> maze) {
+void Maze::PrintMaze() {
+    std::cout << "Walls:" << std::endl;
+    for (int i = 0; i < matrix_.GetRows(); ++i) {
+        for (int j = 0; j < matrix_.GetColumns(); ++j) {
+            std::cout << matrix_(i, j);
         }
         std::cout << std::endl;
     }
 
-    std::cout << "Bottom walls:" << std::endl;
-    for (int i = 0; i < maze.size(); ++i) {
-        for (int j = 0; j < maze[i].size(); ++j) {
-            std::cout << maze[i][j].bottom_wall_;
-        }
-        std::cout << std::endl;
-    }
+    // std::cout << "Bottom walls:" << std::endl;
+    // for (int i = 0; i < maze.size(); ++i) {
+    //     for (int j = 0; j < maze[i].size(); ++j) {
+    //         std::cout << maze[i][j].bottom_wall_;
+    //     }
+    //     std::cout << std::endl;
+    // }
 
     std::cout << "LABIRINT:" << std::endl;
-    for (int i = 0; i < maze[0].size(); ++i) {
+    for (int i = 0; i < matrix_.GetColumns(); ++i) {
         std::cout << " _";
     }
     std::cout << std::endl;
-    for (int i = 0; i < maze.size(); ++i) {
+    for (int i = 0; i < matrix_.GetRows(); ++i) {
         std::cout << "|";
-        for (int j = 0; j < maze[i].size(); ++j) {
-            if (maze[i][j].bottom_wall_ == true) {
+        for (int j = 0; j < matrix_.GetColumns(); ++j) {
+            if (matrix_(i, j) >= bottomWall) {
                 std::cout << "_";
             } else {
                 std::cout << " ";
             }
-            if (maze[i][j].right_wall_ == true) {
+            if (matrix_(i, j) >= rigthWall && matrix_(i, j) != bottomWall) {
                 std::cout << "|";
             } else {
                 std::cout << " ";
@@ -167,14 +177,7 @@ void printMaze(std::vector<std::vector<Cell>> maze) {
         }
         std::cout << std::endl;
     }
-
-
     return;
 } 
 
-int main() {
-    std::vector<std::vector<Cell>> maze = generateMaze(10, 10);
-    printMaze(maze);
-    return 0;
-}
 
