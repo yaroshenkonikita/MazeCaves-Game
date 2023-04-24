@@ -12,8 +12,8 @@ int Cave::RandomInt(double p) {
     return random_num > p ? 0 : 1;
 }
 
-Matrix &Cave::GenerateCave(int height, int width, double chance_of_spawn) {
-    matrix_.Set(width + 2, height + 2);
+Matrix &Cave::GenerateCave(int height, int width) {
+    matrix_.Set(height + 2, width + 2);
 
     //init walls
 
@@ -27,7 +27,7 @@ Matrix &Cave::GenerateCave(int height, int width, double chance_of_spawn) {
 
     for (int i = 1; i < width + 1; ++i) {
         for (int j = 1; j < height + 1; ++j) {
-            matrix_(i, j) = RandomInt(chance_of_spawn);
+            matrix_(i, j) = RandomInt(chance_to_spawn_);
         }
     }
 
@@ -38,23 +38,38 @@ void Cave::IterateCave() {
     Matrix temp_cave = matrix_;
     for (int i = 1; i < matrix_.GetRows() - 1; ++i) {
         for (int j = 1; j < matrix_.GetColumns() - 1; ++j) {
-            int sum_of_walls = 0;
+            int sum_of_alive = 0;
             for (int temp_i = i - 1; temp_i < i + 2; ++temp_i) {
                 for (int temp_j = j - 1; temp_j < j + 2; ++temp_j) {
                     // std::cout << "cave = " << cave[temp_i][temp_j] << std::endl;
-                    sum_of_walls += matrix_(temp_i, temp_j);
+                    // if (matrix_(temp_i, temp_j) == 0 && (temp_i != i && temp_j != j))
+                    //     sum_of_alive++;
+                    sum_of_alive += matrix_(temp_i, temp_j);
                 }
             }
             if (matrix_(i, j)) {
-                sum_of_walls--;
+                sum_of_alive--;
             }
             // std::cout << std::endl;
             // std::cout << "Sum of walls = " << sum_of_walls << std::endl;
-            if (sum_of_walls >= 4) {
+            if (sum_of_alive >= 4) {
                 temp_cave(i, j) = 1;
             } else {
                 temp_cave(i, j) = 0;                
             }
+
+        //     // Если "живые" клетки окружены "живыми" клетками, 
+        //     // количество которых меньше, чем предел "смерти", они "умирают".
+        //     if (matrix_(i, j) == 0 && sum_of_alive < death_limit_) {
+        //         temp_cave(i, j) = 1;
+        //     }
+
+        //     // если "мертвые" клетки находятся рядом с "живыми", 
+        //     // количество которых больше, чем предел "рождения", 
+        //     // они становятся "живыми".
+        //     if (matrix_(i, j) == 1 && sum_of_alive < birth_limit_) {
+        //         temp_cave(i, j) = 0;
+        //     }
         }
     }
     matrix_ = temp_cave;

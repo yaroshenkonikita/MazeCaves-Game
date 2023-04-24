@@ -9,7 +9,7 @@ int main() {
     maze.PrintMaze();
     
     Cave cave;
-    cave.GenerateCave(50, 50, 0.35);
+    cave.GenerateCave(50, 50);
     cave.PrintCave();
     cave.IterateCave();
     std::cout << std::endl;
@@ -23,5 +23,20 @@ int main() {
     std::cout << std::endl;
     cave.PrintCave();
 
+    // cave.IterateCave();
+    // std::cout << std::endl;
+    // cave.PrintCave();
+    
+    // cave.IterateCave();
+    // std::cout << std::endl;
+    // cave.PrintCave();
+    
+    // cave.IterateCave();
+    // std::cout << std::endl;
+    // cave.PrintCave();
+        
+    // cave.IterateCave();
+    // std::cout << std::endl;
+    // cave.PrintCave();
     return 0;
 }
