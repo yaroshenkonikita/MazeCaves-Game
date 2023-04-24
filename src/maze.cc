@@ -147,14 +147,6 @@ void Maze::PrintMaze() {
         std::cout << std::endl;
     }
 
-    // std::cout << "Bottom walls:" << std::endl;
-    // for (int i = 0; i < maze.size(); ++i) {
-    //     for (int j = 0; j < maze[i].size(); ++j) {
-    //         std::cout << maze[i][j].bottom_wall_;
-    //     }
-    //     std::cout << std::endl;
-    // }
-
     std::cout << "LABIRINT:" << std::endl;
     for (int i = 0; i < matrix_.GetColumns(); ++i) {
         std::cout << " _";
