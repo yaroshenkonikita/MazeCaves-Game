@@ -1,3 +1,6 @@
+#ifndef MAZE_SRC_MAZE_H_
+#define MAZE_SRC_MAZE_H_
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -6,6 +9,12 @@
 
 #include "matrix_oop.h"
 
+enum walls {
+    kNothing,
+    kRigthWall,
+    kBottomWall,
+    kBothWalls
+};
 
 class Maze{
 public:
@@ -18,13 +27,11 @@ public:
     void SaveToFile(std::string filename);
 
 private:
-    enum walls {
-        nothing,
-        rigthWall,
-        bottomWall,
-        bothWalls
-    };
+
+    int GetRandomInt();
 
     Matrix matrix_{};
 
 };
+
+#endif // MAZE_SRC_MAZE_H_

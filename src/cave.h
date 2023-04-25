@@ -1,3 +1,6 @@
+#ifndef MAZE_SRC_CAVE_H_
+#define MAZE_SRC_CAVE_H_
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -6,6 +9,7 @@
 
 #include "matrix_oop.h"
 
+enum CellState { kDead, kAlive };
 
 class Cave {
 public:
@@ -32,7 +36,9 @@ public:
     void IterateCave();
 private:
 
-    int RandomInt(double p);
+    int GetRandomInt(double p);
+
+    int FindNeighboursCount(Matrix &map, int rowPos, int colPos);
 
     Matrix matrix_{};
 
@@ -40,3 +46,5 @@ private:
     int birth_limit_{};
     int death_limit_{};
 };
+
+#endif // MAZE_SRC_CAVE_H_

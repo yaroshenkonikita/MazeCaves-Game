@@ -1,5 +1,5 @@
-#ifndef MATRIX_OOP
-#define MATRIX_OOP
+#ifndef MAZE_SRC_MATRIX_OOP_H_
+#define MAZE_SRC_MATRIX_OOP_H_
 
 #include <algorithm>
 #include <cmath>
@@ -100,4 +100,4 @@ class Matrix {
   friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 };
 
-#endif // MATRIX_OOP
+#endif // MAZE_SRC_MATRIX_OOP_H_

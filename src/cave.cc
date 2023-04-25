@@ -4,7 +4,7 @@
 
 #include "cave.h"
 
-int Cave::RandomInt(double p) {
+int Cave::GetRandomInt(double p) {
     std::random_device rd;
     std::default_random_engine engine(rd());
     std::uniform_real_distribution<double> dist(0.0, 1.0);
@@ -12,67 +12,45 @@ int Cave::RandomInt(double p) {
     return random_num > p ? 0 : 1;
 }
 
-Matrix &Cave::GenerateCave(int height, int width) {
-    matrix_.Set(height + 2, width + 2);
+Matrix &Cave::GenerateCave(int height, int width) {\
+    
+    // CHECK FOR VALID ARGUMENTS
 
-    //init walls
-
-    for (int i = 0; i < width + 2; i++) {
-        for (int j = 0; j < height + 2; ++j) {
-            if (i == 0 || j == 0 || i == width + 1 || j == height + 1) {
-                matrix_(i, j) = 1;
-            }
+    matrix_.Set(height, width);
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < height; ++j) {
+            matrix_(i, j) = GetRandomInt(chance_to_spawn_);
         }
     }
-
-    for (int i = 1; i < width + 1; ++i) {
-        for (int j = 1; j < height + 1; ++j) {
-            matrix_(i, j) = RandomInt(chance_to_spawn_);
-        }
-    }
-
     return matrix_;
 }
 
 void Cave::IterateCave() {
-    Matrix temp_cave = matrix_;
-    for (int i = 1; i < matrix_.GetRows() - 1; ++i) {
-        for (int j = 1; j < matrix_.GetColumns() - 1; ++j) {
-            int sum_of_alive = 0;
-            for (int temp_i = i - 1; temp_i < i + 2; ++temp_i) {
-                for (int temp_j = j - 1; temp_j < j + 2; ++temp_j) {
-                    // std::cout << "cave = " << cave[temp_i][temp_j] << std::endl;
-                    // if (matrix_(temp_i, temp_j) == 0 && (temp_i != i && temp_j != j))
-                    //     sum_of_alive++;
-                    sum_of_alive += matrix_(temp_i, temp_j);
-                }
-            }
-            if (matrix_(i, j)) {
-                sum_of_alive--;
-            }
-            // std::cout << std::endl;
-            // std::cout << "Sum of walls = " << sum_of_walls << std::endl;
-            if (sum_of_alive >= 4) {
-                temp_cave(i, j) = 1;
-            } else {
-                temp_cave(i, j) = 0;                
-            }
-
-        //     // Если "живые" клетки окружены "живыми" клетками, 
-        //     // количество которых меньше, чем предел "смерти", они "умирают".
-        //     if (matrix_(i, j) == 0 && sum_of_alive < death_limit_) {
-        //         temp_cave(i, j) = 1;
-        //     }
-
-        //     // если "мертвые" клетки находятся рядом с "живыми", 
-        //     // количество которых больше, чем предел "рождения", 
-        //     // они становятся "живыми".
-        //     if (matrix_(i, j) == 1 && sum_of_alive < birth_limit_) {
-        //         temp_cave(i, j) = 0;
-        //     }
+    Matrix old_map(matrix_);
+    for (int i = 0; i < matrix_.GetRows(); ++i) {
+        for (int j = 0; j < matrix_.GetColumns(); ++j) {
+            int neighbours = FindNeighboursCount(old_map, i, j);
+            if (matrix_(i, j) == kDead && neighbours > birth_limit_) matrix_(i, j) = kAlive;
+            if (matrix_(i, j) == kAlive && neighbours < death_limit_) matrix_(i, j) = kDead;
         }
     }
-    matrix_ = temp_cave;
+}
+
+int Cave::FindNeighboursCount(Matrix &map, int rowPos, int colPos) {
+    int count = 0;
+    for (int i = -1; i < 2; ++i) {
+        for (int j = -1; j < 2; ++j) {
+            if (i == 0 && j == 0) continue;
+            int cur_i = rowPos + i;
+            int cur_j = colPos + j;
+            if (cur_i < 0 || cur_j < 0 || cur_i >= map.GetRows() || cur_j >= map.GetColumns()) {
+                count++;
+            } else {
+                count += map(rowPos + i, colPos + j);
+            }
+        }
+    }
+    return count;
 }
 
 void Cave::PrintCave() {
@@ -87,20 +65,3 @@ void Cave::PrintCave() {
         std::cout << std::endl;
     }
 }
-
-// int main() {
-//     std::vector<std::vector<int>> cave = generateCave(50, 50, 0.35);
-//     printCave(cave);
-//     iterateCave(cave);
-//     std::cout << std::endl;
-//     printCave(cave);
-
-//     iterateCave(cave);
-//     std::cout << std::endl;
-//     printCave(cave);
-
-//     iterateCave(cave);
-//     std::cout << std::endl;
-//     printCave(cave);
-//     return 0;
-// }
