@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <fstream>
 
 #include "cave.h"
 
@@ -65,3 +66,57 @@ void Cave::PrintCave() {
         std::cout << std::endl;
     }
 }
+
+void Cave::LoadFromFile(std::string filename) {
+    std::ifstream file(filename);
+    if (!file) {
+        throw std::invalid_argument("The file does not exist");
+    }
+    std::string line;
+    getline(file, line);
+    size_t subPosition = 0;
+    int height = std::stoi(line, &subPosition);
+    int width = std::stoi(line.substr(subPosition + 1), &subPosition);
+    if (height > 50 || width > 50) {
+        throw std::invalid_argument("Incorrect size");
+    }
+    
+    matrix_.Set(height, width);
+
+    for (int i = 0; i < height; ++i) {
+        getline(file, line);
+        for (int j = 0, k = 0; j < width; ++j, k += 2) {
+            char symbol = line.at(k);
+            if (symbol != '0' && symbol != '1') {
+                throw std::invalid_argument("The file must contain only ones and zeros");
+            }
+            matrix_(i, j) = symbol == '1' ? 1 : 0;
+        }
+    }
+
+    file.close();
+}
+
+void Cave::SaveToFile(std::string filename) {
+    std::ofstream file(filename);
+    if (!file) {
+        throw std::invalid_argument("The file does not exist");
+    }
+    int height = matrix_.GetRows();
+    int width = matrix_.GetColumns();
+
+    file << height << ' ' << width << '\n';
+
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            file << matrix_(i, j);
+            if (j != width - 1) {
+                file << " ";
+            }
+        }
+        if (i != height - 1) {
+            file << '\n';
+        }
+    }
+}
+

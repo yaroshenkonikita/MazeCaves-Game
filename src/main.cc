@@ -11,8 +11,8 @@ int main() {
     maze.PrintMaze();
     
     Cave cave;
-    cave.GenerateCave(100, 100);
-    // cave.PrintCave();
+    cave.LoadFromFile("cave.txt");
+    cave.PrintCave();
     
     // for (int i = 0; i < 6; ++i) {
     //     cave.IterateCave();
@@ -27,16 +27,17 @@ int main() {
     // std::cout << std::endl;
     // cave.PrintCave();
 
-    cave.IterateCave();
-    std::cout << std::endl;
+    // cave.IterateCave();
+    // std::cout << std::endl;
     // cave.PrintCave();
 
-    cave.IterateCave();
-    std::cout << std::endl;
+    // cave.IterateCave();
+    // std::cout << std::endl;
     // cave.PrintCave();
 
-    cave.IterateCave();
-    std::cout << std::endl;
+    // cave.IterateCave();
+    // std::cout << std::endl;
+    // cave.SaveToFile("file.txt");
     // cave.PrintCave();
     
     // cave.IterateCave();

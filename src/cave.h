@@ -31,9 +31,12 @@ public:
     // Можно сделать вывод через std::cout << maze
     void PrintCave();
 
+    void IterateCave();
+
     void SaveToFile(std::string filename);
 
-    void IterateCave();
+    void LoadFromFile(std::string filename);
+
 private:
 
     int GetRandomInt(double p);

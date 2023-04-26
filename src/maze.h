@@ -26,6 +26,8 @@ public:
 
     void SaveToFile(std::string filename);
 
+    void LoadFromFile(std::string filename);
+
 private:
 
     int GetRandomInt();
