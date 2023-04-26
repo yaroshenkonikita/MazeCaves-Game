@@ -36,6 +36,18 @@ public:
 
     void LoadFromFile(std::string filename);
 
+    void SetChanceToSpawn(double chance_to_spawn);
+
+    double GetChanceToSpawn();
+
+    void SetBirthLimit(int birth_limit);
+    
+    int GetBirthLimit();
+    
+    void SetDeathLimit(int death_limit);
+
+    int GetDeathLimit();
+
 private:
 
     int GetRandomInt(double p);

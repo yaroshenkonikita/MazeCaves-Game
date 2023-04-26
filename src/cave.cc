@@ -118,3 +118,36 @@ void Cave::SaveToFile(std::string filename) {
 
     file.close();
 }
+
+void Cave::SetChanceToSpawn(double chance_to_spawn) {
+    if (chance_to_spawn > 1.0 || chance_to_spawn < 0.0) {
+        throw std::invalid_argument("Error: Chance to spawn value must be between 0.0 and 1.0");
+    }
+    chance_to_spawn_ = chance_to_spawn;
+}
+
+double Cave::GetChanceToSpawn() {
+    return chance_to_spawn_;
+}
+
+void Cave::SetBirthLimit(int birth_limit) {
+    if (birth_limit > 7 || birth_limit < 0) {
+        throw std::invalid_argument("Error: Birth limit value must be between 0 and 7");
+    }
+    birth_limit_ = birth_limit;
+}
+
+int Cave::GetBirthLimit() {
+    return birth_limit_;
+}
+
+void Cave::SetDeathLimit(int death_limit) {
+    if (death_limit > 7 || death_limit < 0) {
+        throw std::invalid_argument("Error: Death limit value must be between 0 and 7");
+    }
+    death_limit_ = death_limit;
+}
+
+int Cave::GetDeathLimit() {
+    return death_limit_;
+}
