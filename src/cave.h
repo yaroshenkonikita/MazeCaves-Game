@@ -1,11 +1,10 @@
 #ifndef MAZE_SRC_CAVE_H_
 #define MAZE_SRC_CAVE_H_
 
-#include <iostream>
+// #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <memory>
 #include <random>
+#include <fstream>
 
 #include "matrix_oop.h"
 
@@ -28,7 +27,7 @@ public:
 
     Matrix &GenerateCave(int height, int width);
 
-    // Можно сделать вывод через std::cout << maze
+    // Можно сделать вывод через std::cout << cave
     void PrintCave();
 
     void IterateCave();

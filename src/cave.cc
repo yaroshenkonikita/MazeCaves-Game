@@ -1,8 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <random>
-#include <fstream>
-
 #include "cave.h"
 
 int Cave::GetRandomInt(double p) {
@@ -15,7 +10,9 @@ int Cave::GetRandomInt(double p) {
 
 Matrix &Cave::GenerateCave(int height, int width) {\
     
-    // CHECK FOR VALID ARGUMENTS
+    if (height > 50 || width > 50) {
+        throw std::invalid_argument("Error: Incorrect size. Maximum cave size - 50x50");
+    }
 
     matrix_.Set(height, width);
     for (int i = 0; i < width; ++i) {
@@ -70,15 +67,15 @@ void Cave::PrintCave() {
 void Cave::LoadFromFile(std::string filename) {
     std::ifstream file(filename);
     if (!file) {
-        throw std::invalid_argument("The file does not exist");
+        throw std::invalid_argument("Error: The file does not exist");
     }
     std::string line;
     getline(file, line);
-    size_t subPosition = 0;
-    int height = std::stoi(line, &subPosition);
-    int width = std::stoi(line.substr(subPosition + 1), &subPosition);
+    size_t temp_pos = 0;
+    int height = std::stoi(line, &temp_pos);
+    int width = std::stoi(line.substr(temp_pos + 1), &temp_pos);
     if (height > 50 || width > 50) {
-        throw std::invalid_argument("Incorrect size");
+        throw std::invalid_argument("Error: Incorrect size. Maximum cave size - 50x50");
     }
     
     matrix_.Set(height, width);
@@ -88,7 +85,7 @@ void Cave::LoadFromFile(std::string filename) {
         for (int j = 0, k = 0; j < width; ++j, k += 2) {
             char symbol = line.at(k);
             if (symbol != '0' && symbol != '1') {
-                throw std::invalid_argument("The file must contain only ones and zeros");
+                throw std::invalid_argument("Error: The file must contain only ones and zeros");
             }
             matrix_(i, j) = symbol == '1' ? 1 : 0;
         }
@@ -100,7 +97,7 @@ void Cave::LoadFromFile(std::string filename) {
 void Cave::SaveToFile(std::string filename) {
     std::ofstream file(filename);
     if (!file) {
-        throw std::invalid_argument("The file does not exist");
+        throw std::invalid_argument("Error: The file does not exist");
     }
     int height = matrix_.GetRows();
     int width = matrix_.GetColumns();
@@ -118,5 +115,6 @@ void Cave::SaveToFile(std::string filename) {
             file << '\n';
         }
     }
-}
 
+    file.close();
+}

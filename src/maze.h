@@ -1,11 +1,10 @@
 #ifndef MAZE_SRC_MAZE_H_
 #define MAZE_SRC_MAZE_H_
 
-#include <iostream>
+// #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <memory>
 #include <random>
+#include <fstream>
 
 #include "matrix_oop.h"
 

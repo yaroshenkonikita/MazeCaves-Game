@@ -7,8 +7,11 @@ int Maze::GetRandomInt() {
     return dist(engine);
 }
 
-
 Matrix &Maze::GenerateMaze(int height, int width) {
+    if (height > 50 || width > 50) {
+        throw std::invalid_argument("Error: Incorrect size. Maximum maze size - 50x50");
+    }
+
     // initialization the maze
     matrix_.Set(height, width);
 
@@ -140,7 +143,6 @@ Matrix &Maze::GenerateMaze(int height, int width) {
     return matrix_;
 }
 
-// void printMaze(std::vector<std::vector<Cell>> maze) {
 void Maze::PrintMaze() {
     std::cout << "Walls:" << std::endl;
     for (int i = 0; i < matrix_.GetRows(); ++i) {
@@ -154,6 +156,7 @@ void Maze::PrintMaze() {
     for (int i = 0; i < matrix_.GetColumns(); ++i) {
         std::cout << " _";
     }
+
     std::cout << std::endl;
     for (int i = 0; i < matrix_.GetRows(); ++i) {
         std::cout << "|";
@@ -172,7 +175,102 @@ void Maze::PrintMaze() {
         }
         std::cout << std::endl;
     }
-    return;
 } 
 
+void Maze::LoadFromFile(std::string filename) {
+    std::ifstream file(filename);
+    if (!file) {
+        throw std::invalid_argument("Error: The file does not exist");
+    }
+    std::string line;
+    getline(file, line);
+    size_t temp_pos = 0;
+    int height = std::stoi(line, &temp_pos);
+    int width = std::stoi(line.substr(temp_pos + 1), &temp_pos);
+    if (height > 50 || width > 50) {
+        throw std::invalid_argument("Error: Incorrect size. Maximum maze size - 50x50");
+    }
+    
+    for (int i = 0; i < matrix_.GetRows(); ++i) {
+        for (int j = 0; j < matrix_.GetColumns(); ++j) {
+            matrix_(i, j) = 0;
+        }
+    }
 
+    matrix_.Set(height, width);
+
+    for (int i = 0; i < height; ++i) {
+        getline(file, line);
+        for (int j = 0, k = 0; j < width; ++j, k += 2) {
+            char symbol = line.at(k);
+            if (symbol != '0' && symbol != '1') {
+                throw std::invalid_argument("Error: The file must contain only ones and zeros");
+            }
+            if (symbol == '1') {
+                matrix_(i, j) += kRigthWall;
+            }
+        }
+    }
+
+    getline(file, line);
+
+    for (int i = 0; i < height; ++i) {
+        getline(file, line);
+        for (int j = 0, k = 0; j < width; ++j, k += 2) {
+            char symbol = line.at(k);
+            if (symbol != '0' && symbol != '1') {
+                throw std::invalid_argument("Error: The file must contain only ones and zeros");
+            }
+            if (symbol == '1') {
+                matrix_(i, j) += kBottomWall;
+            }
+        }
+    }   
+
+    file.close();
+}
+
+void Maze::SaveToFile(std::string filename) {
+    std::ofstream file(filename);
+    if (!file) {
+        throw std::invalid_argument("Error: The file does not exist");
+    }
+    int height = matrix_.GetRows();
+    int width = matrix_.GetColumns();
+
+    file << height << ' ' << width << '\n';
+
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            if (matrix_(i, j) == kRigthWall || matrix_(i, j) == kBothWalls) {
+                file << 1;
+            } else {
+                file << 0;
+            }
+            if (j != width - 1) {
+                file << " ";
+            }
+        }
+        file << '\n';
+    }
+
+    file << '\n';
+
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            if (matrix_(i, j) >= kBottomWall) {
+                file << 1;
+            } else {
+                file << 0;
+            }
+            if (j != width - 1) {
+                file << " ";
+            }
+        }
+        if (i != height - 1) {
+            file << '\n';
+        }
+    }
+
+    file.close();
+}

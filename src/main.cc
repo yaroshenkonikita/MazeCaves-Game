@@ -6,13 +6,15 @@
 
 int main() {
     Maze maze;
-    maze.GenerateMaze(50, 50);
+    maze.GenerateMaze(40, 40);
     // std::cout << maze;
+    maze.LoadFromFile("maze.txt");
     maze.PrintMaze();
-    
-    Cave cave;
-    cave.LoadFromFile("cave.txt");
-    cave.PrintCave();
+    // maze.SaveToFile("maze.txt");
+
+    // Cave cave;
+    // cave.LoadFromFile("cave.txt");
+    // cave.PrintCave();
     
     // for (int i = 0; i < 6; ++i) {
     //     cave.IterateCave();
