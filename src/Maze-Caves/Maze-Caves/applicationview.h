@@ -15,6 +15,9 @@ public:
     ApplicationView(QWidget *parent = nullptr);
     ~ApplicationView();
 
+private slots:
+    void on_generateMazePushButton_clicked();
+
 private:
     Ui::ApplicationView *ui;
 };

@@ -6,7 +6,8 @@
 #include <QOpenGLFunctions>
 #include <QOpenGLWidget>
 
-#include "../../SettingsClass/options_t.h"
+#include "../SettingsClass/options_t.h"
+#include "../../../maze.h"
 
 /**
  * @brief Класс наследуемый от QOpenGLWidget для переопределения функций по
@@ -28,6 +29,7 @@ class QOpenGLWidgetOverride : public QOpenGLWidget {
   void paintGL() override;
   s21::Options_t settings;  ///< Экземпляр класса настроек где хранятся данные
                             ///< по настройкам объекта
+  s21::Maze maze_model;
 };
 
 #endif  // GL_CONTROLLER_H_

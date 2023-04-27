@@ -16,15 +16,20 @@ find_package(Qt6 COMPONENTS Core Gui Widgets OpenGL OpenGLWidgets REQUIRED)
 add_executable(Maze-Caves
         main.cc
 
-        applicationview.cc
-        applicationview.h
-        applicationview.ui
-
         OpenGLWidget/gl_override.cc
 
         OpenGLWidget/gl_override.h
 
+        applicationview.cc
+        applicationview.h
+        applicationview.ui
+
         SettingsClass/options_t.cc
-        SettingsClass/options_t.h)
+        SettingsClass/options_t.h
+
+        ../../matrix_oop.h
+        ../../matrix_oop.cc
+        ../../maze.h
+        ../../maze.cc)
 
 target_link_libraries(Maze-Caves PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets)

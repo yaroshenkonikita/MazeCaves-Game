@@ -13,3 +13,9 @@ ApplicationView::~ApplicationView()
     delete ui;
 }
 
+
+void ApplicationView::on_generateMazePushButton_clicked()
+{
+    ui->mazeWidget->update();
+}
+
