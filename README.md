@@ -161,7 +161,7 @@ A maze is considered perfect if it is possible to get from each point to any oth
 - The generated maze must not have isolations and loops
 - Prepare full coverage of the perfect maze generation module with unit-tests
 - The user enters only the dimensionality of the maze: the number of rows and columns
-- The generated maze must be saved in the file format described [above] (#maze-description)
+- The generated maze must be saved in the file format described [above](#maze-description)
 - The created maze should be displayed on the screen as specified in the [first part](#part-1-implementation-of-the-maze-project)
 
 ## Part 3. Solving the maze
@@ -181,6 +181,7 @@ Add cave generation [using a cellular automaton](#generation-using-a-cellular-au
 - The loaded cave must be rendered on the screen in a field of 500 x 500 pixels
 - The user sets the limits for "birth" and "death" of a cell, as well as the chance for the starting initialization of the cell
 - The "birth" and "death" limits can have values from 0 to 7
+- Cells outside the cave are considered alive
 - There should be a step-by-step mode for rendering the results of the algorithm in two variants:
     - Pressing the next step button will lead to rendering the next iteration of the algorithm
     - Pressing the automatic work button starts rendering iterations of the algorithm with a frequency of 1 step in `N` milliseconds, where the number of milliseconds `N` is set through a special field in the user interface
