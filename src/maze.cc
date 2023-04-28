@@ -16,6 +16,7 @@ Matrix &Maze::GenerateMaze(int height, int width) {
 
     // initialization the maze
     matrix_.Set(height, width);
+    matrix_.MulNumber(kNothing);
 
     // initialization right and bottom walls 
     for (int row = 0; row < height; ++row) {

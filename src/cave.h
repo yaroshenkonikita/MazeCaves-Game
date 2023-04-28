@@ -6,7 +6,9 @@
 #include <random>
 #include <fstream>
 
-#include "matrix_oop.h"
+#include "dependence/matrix_oop.h"
+
+namespace s21 {
 
 enum CellState { kDead, kAlive };
 
@@ -60,5 +62,7 @@ private:
     int birth_limit_{};
     int death_limit_{};
 };
+
+} // namespace s21
 
 #endif // MAZE_SRC_CAVE_H_

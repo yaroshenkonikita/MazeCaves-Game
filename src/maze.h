@@ -6,7 +6,7 @@
 #include <random>
 #include <fstream>
 
-#include "matrix_oop.h"
+#include "dependence/matrix_oop.h"
 
 namespace s21 {
 

@@ -1,5 +1,7 @@
 #include "cave.h"
 
+using namespace s21;
+
 int Cave::GetRandomInt(double p) {
     std::random_device rd;
     std::default_random_engine engine(rd());

@@ -1,6 +1,12 @@
+#ifndef MAZE_SRC_MATRIX_OOP_H_
+#define MAZE_SRC_MATRIX_OOP_H_
+
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
+#include <iostream>
+
+namespace s21 {
 
 class Matrix {
  public:
@@ -93,4 +99,9 @@ class Matrix {
   // Check on equal size
   void CheckEqSize(const Matrix &other) const;
 
+  friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 };
+
+} // namespace s21
+
+#endif // MAZE_SRC_MATRIX_OOP_H_
