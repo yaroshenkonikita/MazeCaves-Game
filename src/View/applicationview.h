@@ -2,6 +2,7 @@
 #define APPLICATIONVIEW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ApplicationView; }
@@ -17,6 +18,10 @@ public:
 
 private slots:
     void on_generateMazePushButton_clicked();
+
+    void on_actionSave_Maze_triggered();
+
+    void on_actionLoad_Maze_triggered();
 
 private:
     Ui::ApplicationView *ui;
