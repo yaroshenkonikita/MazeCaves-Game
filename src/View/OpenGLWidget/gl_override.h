@@ -8,6 +8,7 @@
 #include <QOpenGLWidget>
 
 #include "Maze-Cave/maze.h"
+#include "Maze-Cave/maze_solver.h"
 
 /**
  * @brief Класс наследуемый от QOpenGLWidget для переопределения функций по
@@ -28,6 +29,7 @@ class QOpenGLWidgetOverride : public QOpenGLWidget {
    */
   void paintGL() override;
   s21::Maze maze_model;
+  s21::MazeSolver solver;
 };
 
 #endif  // GL_CONTROLLER_H_

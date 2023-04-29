@@ -43,3 +43,10 @@ void ApplicationView::on_actionLoad_Maze_triggered()
     ui->mazeWidget->update();
 }
 
+
+void ApplicationView::on_solveMazePushButton_clicked()
+{
+    ui->mazeWidget->solver.SolveMaze(s21::Location(1,1), s21::Location(3,3), ui->mazeWidget->maze_model);
+//    ui->mazeWidget->maze_model.GetMatrix();
+}
+

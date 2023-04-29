@@ -14,6 +14,8 @@ add_library(${PROJECT_NAME} STATIC
     ${PROJECT_SOURCE_DIR}/maze.cc
     ${PROJECT_SOURCE_DIR}/cave.cc
     ${PROJECT_SOURCE_DIR}/cave.h
+    ${PROJECT_SOURCE_DIR}/maze_solver.cc
+    ${PROJECT_SOURCE_DIR}/maze_solver.h
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR} Matrix)
