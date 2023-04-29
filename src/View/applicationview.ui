@@ -57,6 +57,18 @@
      <layout class="QHBoxLayout" name="yExitHorizontalLayout">
       <item>
        <widget class="QLabel" name="yExitLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="text">
          <string>Exit Y</string>
         </property>
@@ -64,6 +76,12 @@
       </item>
       <item>
        <widget class="QSpinBox" name="yExitSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="minimum">
          <number>1</number>
         </property>
@@ -81,6 +99,18 @@
      <layout class="QHBoxLayout" name="xExitHorizontalLayout">
       <item>
        <widget class="QLabel" name="xExitLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="text">
          <string>Exit X</string>
         </property>
@@ -93,6 +123,12 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
         </property>
         <property name="minimum">
          <number>1</number>
@@ -111,6 +147,18 @@
      <layout class="QHBoxLayout" name="xStartHorizontalLayout">
       <item>
        <widget class="QLabel" name="xStartLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="text">
          <string>Start X</string>
         </property>
@@ -118,6 +166,12 @@
       </item>
       <item>
        <widget class="QSpinBox" name="xStartSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="minimum">
          <number>1</number>
         </property>
@@ -202,6 +256,18 @@
      <layout class="QHBoxLayout" name="yStartHorizontalLayout">
       <item>
        <widget class="QLabel" name="yStartLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="text">
          <string>Start Y</string>
         </property>
@@ -209,6 +275,12 @@
       </item>
       <item>
        <widget class="QSpinBox" name="yStartSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="minimum">
          <number>1</number>
         </property>
