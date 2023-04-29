@@ -12,6 +12,7 @@ void QOpenGLWidgetOverride::initializeGL() {
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   glOrtho(0, 2, 2, 0, 1, -1);
+  maze_model.GenerateMaze(10, 10);
 }
 
 void QOpenGLWidgetOverride::paintGL() {
