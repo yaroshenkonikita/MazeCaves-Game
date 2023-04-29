@@ -22,7 +22,6 @@ void QOpenGLWidgetOverride::paintGL() {
 
   glBegin(GL_LINES);
   glColor3f(1.0f, 0.0f, 0.0f);
-  glLineWidth(2);  // толщина ребра
   int rows = maze_model.GetMatrix().GetRows(), columns = maze_model.GetMatrix().GetColumns();
   double width = 2.f / (columns + 1), height = 2.f / (rows + 1);
   glVertex2f(width / 2,  height / 2);
@@ -43,4 +42,5 @@ void QOpenGLWidgetOverride::paintGL() {
     }
   }
   glEnd();
+  glLineWidth(2);  // толщина ребра
 }
