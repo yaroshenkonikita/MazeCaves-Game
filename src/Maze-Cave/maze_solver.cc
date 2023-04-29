@@ -94,6 +94,9 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
                 current.x += turn.x;
                 current.y += turn.y;
 
+                while (std::count(solution.begin(), solution.end(), current)) {
+                    solution.pop_back();
+                }
                 solution.push_back(current);
 
                 // Проверяем на выход
@@ -108,6 +111,9 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
             current.x += turn.x;
             current.y += turn.y;
 
+            while (std::count(solution.begin(), solution.end(), current)) {
+                solution.pop_back();
+            }
             solution.push_back(current);
 
             // Проверяем на выход

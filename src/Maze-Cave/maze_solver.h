@@ -22,6 +22,10 @@ struct Location {
     int y;
     Location() : x(0), y(0) {}
     Location(int x_value, int y_value) : x(x_value), y(y_value) {}
+
+    bool operator==(const Location& other) const {
+            return x == other.x && y == other.y;
+        }
 };
 
 class MazeSolver{
