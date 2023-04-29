@@ -37,11 +37,14 @@ public:
 
     void PrintSolution(std::vector<Location> solution);
 
+    std::vector<Location> GetLocations();
 private:
 
     int GetRandomInt() const;
 
     Maze maze_{};
+
+    std::vector<Location> locations_;
 
 };
 
