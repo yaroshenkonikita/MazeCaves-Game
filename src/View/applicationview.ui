@@ -2,14 +2,6 @@
 <ui version="4.0">
  <class>ApplicationView</class>
  <widget class="QMainWindow" name="ApplicationView">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>524</width>
-    <height>726</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>ApplicationView</string>
   </property>
@@ -43,7 +35,7 @@
        </size>
       </property>
       <property name="minimum">
-       <number>5</number>
+       <number>1</number>
       </property>
       <property name="maximum">
        <number>50</number>
@@ -309,7 +301,7 @@
        </size>
       </property>
       <property name="minimum">
-       <number>5</number>
+       <number>1</number>
       </property>
       <property name="maximum">
        <number>50</number>
@@ -345,10 +337,6 @@
    <zorder>ySizeSpinBox</zorder>
    <zorder>xSizeLabel</zorder>
    <zorder>xSizeSpinBox</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>horizontalLayoutWidget_2</zorder>
-   <zorder>horizontalLayoutWidget_3</zorder>
-   <zorder>horizontalLayoutWidget_4</zorder>
    <zorder>sizeMazeLabel</zorder>
    <zorder>solveMazePushButton</zorder>
   </widget>
@@ -357,8 +345,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>524</width>
-     <height>24</height>
+     <width>518</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
