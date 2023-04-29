@@ -3,11 +3,11 @@
 
 #define GL_SILENCE_DEPRECATION
 #include <QColorDialog>
+#include <QDialog>
 #include <QOpenGLFunctions>
 #include <QOpenGLWidget>
 
-#include "../SettingsClass/options_t.h"
-#include "../Maze-Cave/maze.h"
+#include "Maze-Cave/maze.h"
 
 /**
  * @brief Класс наследуемый от QOpenGLWidget для переопределения функций по
@@ -27,8 +27,6 @@ class QOpenGLWidgetOverride : public QOpenGLWidget {
    * виджете
    */
   void paintGL() override;
-  s21::Options_t settings;  ///< Экземпляр класса настроек где хранятся данные
-                            ///< по настройкам объекта
   s21::Maze maze_model;
 };
 

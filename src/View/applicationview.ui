@@ -391,7 +391,7 @@
   <customwidget>
    <class>QOpenGLWidgetOverride</class>
    <extends>QWidget</extends>
-   <header>OpenGLWidget/gl_override.h</header>
+   <header>View/OpenGLWidget/gl_override.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
