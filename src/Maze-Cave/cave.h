@@ -22,7 +22,7 @@ public:
     }
 
     Cave(double chance_to_spawn, int birth_limit, int death_limit) {
-        this->chance_to_spawn_ = chance_to_spawn_;
+        this->chance_to_spawn_ = chance_to_spawn;
         this->birth_limit_ = birth_limit;
         this->death_limit_ = death_limit;
     }
