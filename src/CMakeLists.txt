@@ -11,25 +11,21 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(dependence)
+add_subdirectory(Maze-Cave)
 
 find_package(Qt6 COMPONENTS Core Gui Widgets OpenGL OpenGLWidgets REQUIRED)
 
 add_executable(Maze-Caves
         main.cc
 
-        Maze-Caves/OpenGLWidget/gl_override.cc
+        OpenGLWidget/gl_override.cc
+        OpenGLWidget/gl_override.h
 
-        Maze-Caves/OpenGLWidget/gl_override.h
+        View/applicationview.cc
+        View/applicationview.h
+        View/applicationview.ui
 
-        Maze-Caves/applicationview.cc
-        Maze-Caves/applicationview.h
-        Maze-Caves/applicationview.ui
+        SettingsClass/options_t.cc
+        SettingsClass/options_t.h)
 
-        Maze-Caves/SettingsClass/options_t.cc
-        Maze-Caves/SettingsClass/options_t.h
-
-        maze.h
-        maze.cc)
-
-target_link_libraries(Maze-Caves PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets matrix)
+target_link_libraries(Maze-Caves PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets maze_cave matrix)

@@ -7,7 +7,7 @@
 #include <QOpenGLWidget>
 
 #include "../SettingsClass/options_t.h"
-#include "../../maze.h"
+#include "../Maze-Cave/maze.h"
 
 /**
  * @brief Класс наследуемый от QOpenGLWidget для переопределения функций по

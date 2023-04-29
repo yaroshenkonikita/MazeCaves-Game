@@ -1,4 +1,4 @@
-#include "applicationview.h"
+#include "View/applicationview.h"
 
 #include <QApplication>
 
