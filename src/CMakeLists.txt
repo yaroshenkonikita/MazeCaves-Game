@@ -28,4 +28,4 @@ add_executable(Maze-Caves
         SettingsClass/options_t.cc
         SettingsClass/options_t.h)
 
-target_link_libraries(Maze-Caves PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets maze_cave matrix)
+target_link_libraries(Maze-Caves PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets MazeCave Matrix)
