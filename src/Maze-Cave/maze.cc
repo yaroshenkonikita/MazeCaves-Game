@@ -281,3 +281,11 @@ void Maze::SaveToFile(std::string filename) const {
 const Matrix &Maze::GetMatrix() const {
     return matrix_;
 }
+
+int Maze::GetColumns() const {
+    return matrix_.GetColumns();
+}
+
+int Maze::GetRows() const {
+    return matrix_.GetRows();
+}

@@ -49,8 +49,11 @@ bool MazeSolver::CanMove(Location current, Location turn, Matrix matrix_) {
 }
 */
 
-std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze maze_) {
-    this->maze_ = maze_;
+std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, const Maze &maze_) {
+    if (begin.x >= maze_.GetColumns() ||  begin.y >= maze_.GetRows() ||
+        end.x >= maze_.GetColumns() ||  end.y >= maze_.GetRows()) {
+        throw std::invalid_argument("Begin or End position is invalid");
+    }
     locations_.clear();
     locations_.push_back(begin);
 
@@ -178,11 +181,11 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
     return locations_;
 }
 
-void MazeSolver::PrintSolution(std::vector<Location> solution) {
-    for (auto pos : solution) {
-        std::cout << "{" << pos.x << ", " << pos.y << "}" << std::endl;
-    }
-}
+//void MazeSolver::PrintSolution(std::vector<Location> solution) {
+//    for (auto pos : solution) {
+//        std::cout << "{" << pos.x << ", " << pos.y << "}" << std::endl;
+//    }
+//}
 
 std::vector<Location> &MazeSolver::GetLocations() {
     return locations_;

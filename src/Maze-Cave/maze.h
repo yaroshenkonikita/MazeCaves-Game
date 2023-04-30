@@ -30,6 +30,8 @@ public:
     void LoadFromFile(std::string filename);
 
     const Matrix &GetMatrix() const;
+    int GetColumns() const;
+    int GetRows() const;
 
 private:
 

@@ -52,11 +52,8 @@ void ApplicationView::on_solveMazePushButton_clicked()
                                  ui->yStartSpinBox->value() - 1);
     s21::Location exit_location(ui->xExitSpinBox->value() - 1,
                                 ui->yExitSpinBox->value() - 1);
-    auto sol = ui->mazeWidget->solver.SolveMaze(start_location, exit_location,
+    ui->mazeWidget->solver.SolveMaze(start_location, exit_location,
                                                 ui->mazeWidget->maze_model);
-    //DEBUG
-    ui->mazeWidget->solver.PrintSolution(sol);
-    //DEBUG
     ui->mazeWidget->update();
 }
 

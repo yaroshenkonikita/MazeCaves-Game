@@ -16,18 +16,18 @@ struct Location {
     Location(int x_value, int y_value) : x(x_value), y(y_value) {}
 
     bool operator==(const Location& other) const {
-            return x == other.x && y == other.y;
-        }
+        return x == other.x && y == other.y;
+    }
 };
 
-class MazeSolver{
+class MazeSolver {
 public:
 
 //    MazeSolver(Maze maze) : maze_(maze) {}
 
     std::vector<Location> SolveMaze(Location begin, Location end, Maze maze_);
 
-    void PrintSolution(std::vector<Location> solution);
+//    void PrintSolution(std::vector<Location> solution);
 
     std::vector<Location> &GetLocations();
 private:
@@ -35,8 +35,6 @@ private:
 //    bool CanMove(Location current, Location turn, Matrix matrix_);
 
     bool CheckForwardWall(Location current, Location turn, Matrix matrix_);
-
-    Maze maze_{};
 
     std::vector<Location> locations_;
 

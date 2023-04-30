@@ -21,7 +21,7 @@ void QOpenGLWidgetOverride::paintGL() {
 
   glBegin(GL_LINES);
   glColor3f(1.0f, 0.0f, 0.0f);
-  int rows = maze_model.GetMatrix().GetRows(), columns = maze_model.GetMatrix().GetColumns();
+  int rows = maze_model.GetRows(), columns = maze_model.GetColumns();
   double width = 2.f / (columns + 1), height = 2.f / (rows + 1);
   glVertex2f(width / 2,  height / 2);
   glVertex2f(width * (columns + 0.5), height / 2);
