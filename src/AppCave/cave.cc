@@ -17,8 +17,8 @@ Matrix &Cave::GenerateCave(int height, int width) {
   }
 
   matrix_.Set(height, width);
-  for (int i = 0; i < width; ++i) {
-    for (int j = 0; j < height; ++j) {
+  for (int i = 0; i < height; ++i) {
+    for (int j = 0; j < width; ++j) {
       matrix_(i, j) = GetRandomInt(chance_to_spawn_);
     }
   }
