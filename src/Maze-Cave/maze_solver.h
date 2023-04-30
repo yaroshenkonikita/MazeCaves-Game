@@ -25,7 +25,7 @@ public:
 
 //    MazeSolver(Maze maze) : maze_(maze) {}
 
-    std::vector<Location> SolveMaze(Location begin, Location end, Maze maze_);
+    std::vector<Location> SolveMaze(Location begin, Location end, const Maze &maze_);
 
 //    void PrintSolution(std::vector<Location> solution);
 
