@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(MazeCave VERSION 2.0 LANGUAGES CXX)
+project(Maze VERSION 2.0 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(Dependence)
+add_subdirectory(Matrix)
 
 add_library(${PROJECT_NAME} STATIC
     ${PROJECT_SOURCE_DIR}/maze.h
