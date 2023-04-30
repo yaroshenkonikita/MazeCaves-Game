@@ -23,6 +23,8 @@ private slots:
 
     void on_actionLoad_Maze_triggered();
 
+    void on_solveMazePushButton_clicked();
+
 private:
     Ui::ApplicationView *ui;
 };

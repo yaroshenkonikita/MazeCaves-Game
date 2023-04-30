@@ -43,3 +43,19 @@ void ApplicationView::on_actionLoad_Maze_triggered()
     ui->mazeWidget->update();
 }
 
+
+void ApplicationView::on_solveMazePushButton_clicked()
+{
+    int start_x = ui->xStartSpinBox->value();
+    int start_y = ui->yStartSpinBox->value();
+    int exit_x = ui->xExitSpinBox->value();
+    int exit_y = ui->yExitSpinBox->value();
+    s21::Location start_location(start_x, start_y);
+    s21::Location exit_location(exit_x, exit_y);
+    auto sol = ui->mazeWidget->solver.SolveMaze(start_location, exit_location,
+                                                ui->mazeWidget->maze_model);
+    ui->mazeWidget->solver.PrintSolution(sol);
+    ui->mazeWidget->update();
+//    ui->mazeWidget->maze_model.GetMatrix();
+}
+
