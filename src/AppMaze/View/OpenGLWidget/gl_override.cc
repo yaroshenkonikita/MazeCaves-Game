@@ -37,7 +37,7 @@ void QOpenGLWidgetOverride::paintGL() {
         glVertex2f(width / 2 + width * (column),
                    height / 2 + height * (row + 1));
       }
-      if (wall == s21::kRigthWall || wall == s21::kBothWalls) {
+      if (wall == s21::kRightWall || wall == s21::kBothWalls) {
         glVertex2f(width / 2 + width * (column + 1),
                    height / 2 + height * (row + 1));
         glVertex2f(width / 2 + width * (column + 1),

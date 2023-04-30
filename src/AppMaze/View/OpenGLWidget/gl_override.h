@@ -7,8 +7,8 @@
 #include <QOpenGLFunctions>
 #include <QOpenGLWidget>
 
-#include "Maze-Cave/maze.h"
-#include "Maze-Cave/maze_solver.h"
+#include "Maze/maze.h"
+#include "Maze/maze_solver.h"
 
 /**
  * @brief Класс наследуемый от QOpenGLWidget для переопределения функций по

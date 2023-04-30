@@ -15,12 +15,12 @@ add_subdirectory(Maze)
 
 find_package(Qt6 COMPONENTS Core Gui Widgets OpenGL OpenGLWidgets REQUIRED)
 
-add_executable(AppMaze
-        main.cc
-        View/OpenGLWidget/gl_override.cc
-        View/OpenGLWidget/gl_override.h
-        View/applicationview.cc
-        View/applicationview.h
-        View/applicationview.ui)
+add_executable(${PROJECT_NAME}
+        ${PROJECT_SOURCE_DIR}/main.cc
+        ${PROJECT_SOURCE_DIR}/View/OpenGLWidget/gl_override.cc
+        ${PROJECT_SOURCE_DIR}/View/OpenGLWidget/gl_override.h
+        ${PROJECT_SOURCE_DIR}/View/applicationview.cc
+        ${PROJECT_SOURCE_DIR}/View/applicationview.h
+        ${PROJECT_SOURCE_DIR}/View/applicationview.ui)
 
-target_link_libraries(AppMaze PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets Maze Matrix)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets Maze Matrix)

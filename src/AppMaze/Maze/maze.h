@@ -6,11 +6,11 @@
 #include <random>
 #include <vector>
 
-#include "../Dependence/matrix_oop.h"
+#include "Matrix/matrix_oop.h"
 
 namespace s21 {
 
-enum Walls { kNothing, kRigthWall, kBottomWall, kBothWalls };
+enum Walls { kNothing, kRightWall, kBottomWall, kBothWalls };
 
 class Maze {
  public:

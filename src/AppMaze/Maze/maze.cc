@@ -23,7 +23,7 @@ Matrix &Maze::GenerateMaze(int height, int width) {
   for (int row = 0; row < height; ++row) {
     for (int col = 0; col < width; ++col) {
       if (col == width - 1) {
-        matrix_(row, col) += kRigthWall;
+        matrix_(row, col) += kRightWall;
       }
       if (row == height - 1) {
         matrix_(row, col) += kBottomWall;
@@ -50,7 +50,7 @@ Matrix &Maze::GenerateMaze(int height, int width) {
       const auto right_wall = GetRandomInt();
 
       if ((right_wall) || (row_set[col] == row_set[col + 1])) {
-        matrix_(row, col) += kRigthWall;
+        matrix_(row, col) += kRightWall;
       } else {
         const auto changing_set = row_set[col + 1];
         for (int i = 0; i < width; ++i) {
@@ -112,7 +112,7 @@ Matrix &Maze::GenerateMaze(int height, int width) {
     const auto right_wall = GetRandomInt();
 
     if ((right_wall) || (row_set[col] == row_set[col + 1])) {
-      matrix_(height - 1, col) += kRigthWall;
+      matrix_(height - 1, col) += kRightWall;
     } else {
       const auto changing_set = row_set[col + 1];
       for (int i = 0; i < width; ++i) {
@@ -125,8 +125,8 @@ Matrix &Maze::GenerateMaze(int height, int width) {
 
   for (int col = 0; col < width - 1; ++col) {
     if (row_set[col] != row_set[col + 1] &&
-        matrix_(height - 1, col) >= kRigthWall) {
-      matrix_(height - 1, col) -= kRigthWall;
+        matrix_(height - 1, col) >= kRightWall) {
+      matrix_(height - 1, col) -= kRightWall;
       const auto changing_set = row_set[col + 1];
       for (int i = 0; i < width; ++i) {
         if (row_set[i] == changing_set) {
@@ -138,8 +138,8 @@ Matrix &Maze::GenerateMaze(int height, int width) {
 
   for (int col = 0; col < width - 1; ++col) {
     if (row_set[col] != row_set[col + 1] &&
-        matrix_(height - 1, col) >= kRigthWall) {
-      matrix_(height - 1, col) -= kRigthWall;
+        matrix_(height - 1, col) >= kRightWall) {
+      matrix_(height - 1, col) -= kRightWall;
     }
   }
 
@@ -169,7 +169,7 @@ void Maze::PrintMaze() const {
       } else {
         std::cout << " ";
       }
-      if (matrix_(i, j) >= kRigthWall && matrix_(i, j) != kBottomWall) {
+      if (matrix_(i, j) >= kRightWall && matrix_(i, j) != kBottomWall) {
         std::cout << "|";
       } else {
         std::cout << " ";
@@ -211,7 +211,7 @@ void Maze::LoadFromFile(std::string filename) {
             "Error: The file must contain only ones and zeros");
       }
       if (symbol == '1') {
-        matrix_(i, j) += kRigthWall;
+        matrix_(i, j) += kRightWall;
       }
     }
   }
@@ -247,7 +247,7 @@ void Maze::SaveToFile(std::string filename) const {
 
   for (int i = 0; i < height; ++i) {
     for (int j = 0; j < width; ++j) {
-      if (matrix_(i, j) == kRigthWall || matrix_(i, j) == kBothWalls) {
+      if (matrix_(i, j) == kRightWall || matrix_(i, j) == kBothWalls) {
         file << 1;
       } else {
         file << 0;

@@ -6,7 +6,7 @@ bool MazeSolver::CheckForwardWall(Location current, Location turn,
                                   Matrix matrix_) {
   bool wall_forward = false;
   if (turn.x == 1) {
-    if (matrix_(current.y, current.x) == kRigthWall ||
+    if (matrix_(current.y, current.x) == kRightWall ||
         matrix_(current.y, current.x) == kBothWalls) {
       wall_forward = true;
     }
@@ -14,7 +14,7 @@ bool MazeSolver::CheckForwardWall(Location current, Location turn,
     if (current.x == 0) {
       wall_forward = true;
     } else {
-      if (matrix_(current.y, current.x - 1) == kRigthWall ||
+      if (matrix_(current.y, current.x - 1) == kRightWall ||
           matrix_(current.y, current.x - 1) == kBothWalls) {
         wall_forward = true;
       }
