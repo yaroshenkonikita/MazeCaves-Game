@@ -1,12 +1,8 @@
 #include "maze_solver.h"
 
-
-#include <vector>
-#include <queue>
-
 using namespace s21;
 
-bool CheckForwardWall(Location current, Location turn, Matrix matrix_) {
+bool MazeSolver::CheckForwardWall(Location current, Location turn, Matrix matrix_) {
     bool wall_forward = false;
     if (turn.x == 1) {
         if (matrix_(current.y, current.x) == kRigthWall ||
@@ -38,15 +34,14 @@ bool CheckForwardWall(Location current, Location turn, Matrix matrix_) {
     return wall_forward;
 }
 
-bool CanMove(Location current, Location turn, Matrix matrix_) {
+bool MazeSolver::CanMove(Location current, Location turn, Matrix matrix_) {
     int next_x = current.x + turn.x;
     int next_y = current.y + turn.y;
     if (next_x < 0 || next_x >= matrix_.GetColumns() ||
         next_y < 0 || next_y >= matrix_.GetRows()) {
         return false;
     }
-    bool wall = CheckForwardWall(current, turn, matrix_);
-    if (wall) {
+    if (CheckForwardWall(current, turn, matrix_)) {
         return false;
     }
     return true;
@@ -61,6 +56,7 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
 
     Location current = begin;
     Location turn(0, 1);
+
     // В начале работы надо найти стену. Двигаемся вниз пока в стену не упремся
     while (current.y + turn.y < matrix_.GetRows() &&
            matrix_(current.y, current.x) < kBottomWall) {
@@ -78,9 +74,7 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
         }
 
         // Проверяем стену впереди
-        bool wall_forward = CheckForwardWall(current, turn, matrix_);
-
-        if (wall_forward) {
+        if (CheckForwardWall(current, turn, matrix_)) {
             // Если впереди стена - поворачиваем налево
             if (turn.x != 0) {
                 turn.y = turn.x * -1;
@@ -91,9 +85,7 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
             }
 
             // Проверяем стену впереди
-            wall_forward = CheckForwardWall(current, turn, matrix_);
-
-            if (wall_forward) {
+            if (CheckForwardWall(current, turn, matrix_)) {
                 // Если стена впереди - поворачиваем налево
                 if (turn.x != 0) {
                     turn.y = turn.x * -1;
@@ -145,6 +137,8 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
         Location(-1, 0)  // влево
     };
 
+    // Используем алгоритм поиска в ширину (BFS) для того, чтобы
+    // убрать все тупики и неиспользуемые клетки в пути
     std::queue<std::vector<Location>> q;
     q.push(locations_);
 
@@ -175,8 +169,6 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
             q.push(new_path);
         }
     }
-
-
     return locations_;
 }
 

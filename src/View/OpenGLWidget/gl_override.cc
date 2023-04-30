@@ -49,8 +49,6 @@ void QOpenGLWidgetOverride::paintGL() {
           glVertex2f(width / ((locations.at(i + 1).x + 1) / 2),
                      height / ((locations.at(i + 1).y + 1) / 2));
       }
-//      glVertex2f(0.25, 0.25);
-//      glVertex2f(0.75, 0.75);
   }
 
   glEnd();

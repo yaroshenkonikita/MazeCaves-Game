@@ -1,21 +1,13 @@
 #ifndef MAZE_SRC_MAZE_SOLVER_H_
 #define MAZE_SRC_MAZE_SOLVER_H_
 
-// #include <iostream>
 #include <vector>
+#include <queue>
 
-//#include "Dependence/matrix_oop.h"
 #include "maze.h"
 
 
 namespace s21 {
-
-enum Side {
-    kLeft,
-    kUp,
-    kRigth,
-    kDown
-};
 
 struct Location {
     int x;
@@ -40,7 +32,9 @@ public:
     std::vector<Location> GetLocations();
 private:
 
-    int GetRandomInt() const;
+    bool CanMove(Location current, Location turn, Matrix matrix_);
+
+    bool CheckForwardWall(Location current, Location turn, Matrix matrix_);
 
     Maze maze_{};
 
