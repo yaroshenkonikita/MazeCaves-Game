@@ -6,7 +6,7 @@
 #include <random>
 #include <vector>
 
-#include "Matrix/matrix_oop.h"
+#include "../Matrix/matrix_oop.h"
 
 namespace s21 {
 
