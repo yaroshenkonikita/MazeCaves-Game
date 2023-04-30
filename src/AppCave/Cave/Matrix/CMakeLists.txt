@@ -12,4 +12,4 @@ add_library(${PROJECT_NAME} STATIC
     ${PROJECT_SOURCE_DIR}/matrix_oop.cc
 )
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ../../../..)
