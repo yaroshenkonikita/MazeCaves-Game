@@ -16,7 +16,7 @@ void QOpenGLWidgetOverride::initializeGL() {
 }
 
 void QOpenGLWidgetOverride::paintGL() {
-    glClear(GL_COLOR_BUFFER_BIT);
+  glClear(GL_COLOR_BUFFER_BIT);
   glClearColor(0, 0, 0, 255);  // цвет заднего фона
 
   glBegin(GL_LINES);
@@ -42,9 +42,11 @@ void QOpenGLWidgetOverride::paintGL() {
   }
   glEnd();
 
+
   glBegin(GL_LINE_STRIP);
+  glColor3f(0.0f, 1.0f, 0.0f);
   auto locations = solver.GetLocations();
-  for (int i = 0; i < locations.size(); +i) {
+  for (int i = 0; i < locations.size(); ++i) {
     glVertex2f(width * (locations.at(i).x + 1), height * (locations.at(i).y + 1));
   }
   glEnd();
