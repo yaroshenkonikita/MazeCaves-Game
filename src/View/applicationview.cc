@@ -16,7 +16,9 @@ ApplicationView::~ApplicationView()
 
 void ApplicationView::on_generateMazePushButton_clicked()
 {
+    ui->mazeWidget->solver.GetLocations().clear();
     ui->mazeWidget->maze_model.GenerateMaze(ui->xSizeSpinBox->value(), ui->ySizeSpinBox->value());
+    ui->mazeWidget->update();
 }
 
 

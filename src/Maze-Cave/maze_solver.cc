@@ -34,6 +34,7 @@ bool MazeSolver::CheckForwardWall(Location current, Location turn, Matrix matrix
     return wall_forward;
 }
 
+/* UNNECESSARY PART OF CODE
 bool MazeSolver::CanMove(Location current, Location turn, Matrix matrix_) {
     int next_x = current.x + turn.x;
     int next_y = current.y + turn.y;
@@ -46,6 +47,7 @@ bool MazeSolver::CanMove(Location current, Location turn, Matrix matrix_) {
     }
     return true;
 }
+*/
 
 std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze maze_) {
     this->maze_ = maze_;
@@ -58,10 +60,10 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
     Location turn(0, 1);
 
     // В начале работы надо найти стену. Двигаемся вниз пока в стену не упремся
-    while (current.y + turn.y < matrix_.GetRows() &&
-           matrix_(current.y, current.x) < kBottomWall) {
-        current.y++;
-    }
+//    while (current.y + turn.y < matrix_.GetRows() &&
+//           matrix_(current.y, current.x) < kBottomWall) {
+//        current.y++;
+//    }
 
     while (true) {
         // Поворачиваем направо
@@ -130,6 +132,8 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
         }
     }
 
+
+    /* UNNECESSARY PART OF CODE
     const Location directions[4] {
         Location(0, -1), // вверх
         Location(1, 0),  // вправо
@@ -169,6 +173,8 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end, Maze m
             q.push(new_path);
         }
     }
+    */
+
     return locations_;
 }
 
@@ -178,6 +184,6 @@ void MazeSolver::PrintSolution(std::vector<Location> solution) {
     }
 }
 
-std::vector<Location> MazeSolver::GetLocations() {
+std::vector<Location> &MazeSolver::GetLocations() {
     return locations_;
 }

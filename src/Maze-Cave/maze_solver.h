@@ -29,10 +29,10 @@ public:
 
     void PrintSolution(std::vector<Location> solution);
 
-    std::vector<Location> GetLocations();
+    std::vector<Location> &GetLocations();
 private:
 
-    bool CanMove(Location current, Location turn, Matrix matrix_);
+//    bool CanMove(Location current, Location turn, Matrix matrix_);
 
     bool CheckForwardWall(Location current, Location turn, Matrix matrix_);
 
