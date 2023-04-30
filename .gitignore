@@ -57,3 +57,6 @@ build*
 .idea/
 src/CMakeLists.txt.user
 
+# CMake
+CMakeFiles
+CMakeCache.txt
