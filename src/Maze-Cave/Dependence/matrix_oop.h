@@ -3,8 +3,8 @@
 
 #include <algorithm>
 #include <cmath>
-#include <stdexcept>
 #include <iostream>
+#include <stdexcept>
 
 namespace s21 {
 
@@ -31,7 +31,7 @@ class Matrix {
   void Set(int size_rows, int size_columns);
   void SetRows(int size_rows);
   void SetColumns(int size_columns);
-  
+
   // Matrix indexing
   // Set
   double &operator()(const int rows, const int columns);
@@ -82,8 +82,7 @@ class Matrix {
   // Creates a new transposed matrix from the current one and returns it
   [[nodiscard]] Matrix Transpose() const;
   // Creates a new minor matrix from the current one and returns it
-  [[nodiscard]] Matrix MinorMatrix(int discard_row,
-                                      int discard_column) const;
+  [[nodiscard]] Matrix MinorMatrix(int discard_row, int discard_column) const;
   // Calculates the algebraic addition matrix of the current one and returns it
   [[nodiscard]] Matrix CalcComplements() const;
   // Calculates and returns the determinant of the current matrix
@@ -95,13 +94,13 @@ class Matrix {
   // Attributes
   double *matrix_;
   int rows_, columns_;
-  
+
   // Check on equal size
   void CheckEqSize(const Matrix &other) const;
 
   friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
 };
 
-} // namespace s21
+}  // namespace s21
 
-#endif // MAZE_SRC_MATRIX_OOP_H_
+#endif  // MAZE_SRC_MATRIX_OOP_H_

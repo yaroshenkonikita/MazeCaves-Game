@@ -23,31 +23,36 @@ void QOpenGLWidgetOverride::paintGL() {
   glColor3f(1.0f, 0.0f, 0.0f);
   int rows = maze_model.GetRows(), columns = maze_model.GetColumns();
   double width = 2.f / (columns + 1), height = 2.f / (rows + 1);
-  glVertex2f(width / 2,  height / 2);
+  glVertex2f(width / 2, height / 2);
   glVertex2f(width * (columns + 0.5), height / 2);
-  glVertex2f(width / 2,  height / 2);
+  glVertex2f(width / 2, height / 2);
   glVertex2f(width / 2, height * (rows + 0.5));
   for (int row = 0; row < rows; ++row) {
     for (int column = 0; column < columns; ++column) {
-      s21::Walls wall = static_cast<s21::Walls>(maze_model.GetMatrix()(row, column));
+      s21::Walls wall =
+          static_cast<s21::Walls>(maze_model.GetMatrix()(row, column));
       if (wall == s21::kBottomWall || wall == s21::kBothWalls) {
-        glVertex2f(width / 2 + width * (column + 1), height / 2 + height * (row + 1));
-        glVertex2f(width / 2 + width * (column), height / 2 + height * (row + 1));
+        glVertex2f(width / 2 + width * (column + 1),
+                   height / 2 + height * (row + 1));
+        glVertex2f(width / 2 + width * (column),
+                   height / 2 + height * (row + 1));
       }
       if (wall == s21::kRigthWall || wall == s21::kBothWalls) {
-        glVertex2f(width / 2 + width * (column + 1), height / 2 + height * (row + 1));
-        glVertex2f(width / 2 + width * (column + 1), height / 2 + height * (row));
+        glVertex2f(width / 2 + width * (column + 1),
+                   height / 2 + height * (row + 1));
+        glVertex2f(width / 2 + width * (column + 1),
+                   height / 2 + height * (row));
       }
     }
   }
   glEnd();
 
-
   glBegin(GL_LINE_STRIP);
   glColor3f(0.0f, 1.0f, 0.0f);
   auto locations = solver.GetLocations();
   for (int i = 0; i < locations.size(); ++i) {
-    glVertex2f(width * (locations.at(i).x + 1), height * (locations.at(i).y + 1));
+    glVertex2f(width * (locations.at(i).x + 1),
+               height * (locations.at(i).y + 1));
   }
   glEnd();
   glLineWidth(2);  // толщина ребра

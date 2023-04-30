@@ -93,3 +93,4 @@ rebuild: clean all
 
 style:
 	@clang-format -n -style=google $(shell find . \( -name "*.cc" -or -name "*.h"  -or -name "*.c" -or -name "*.cpp" \))
+	@clang-format -i -style=google $(shell find . \( -name "*.cc" -or -name "*.h"  -or -name "*.c" -or -name "*.cpp" \))

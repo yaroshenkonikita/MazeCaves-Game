@@ -13,7 +13,8 @@ Matrix::Matrix(int rows, int columns) : rows_(rows), columns_(columns) {
   matrix_ = new double[Size()]{0};
 }
 
-Matrix::Matrix(const Matrix &other) : rows_(other.rows_), columns_(other.columns_) {
+Matrix::Matrix(const Matrix &other)
+    : rows_(other.rows_), columns_(other.columns_) {
   matrix_ = new double[Size()]{0};
   std::copy_n(other.matrix_, Size(), matrix_);
 }
@@ -194,21 +195,15 @@ Matrix &Matrix::operator*=(const Matrix &other) {
   return MulMatrix(other), *this;
 }
 
-Matrix &Matrix::operator*=(const double num) {
-  return MulNumber(num), *this;
-}
+Matrix &Matrix::operator*=(const double num) { return MulNumber(num), *this; }
 
 Matrix &Matrix::operator-=(const Matrix &other) {
   return SubMatrix(other), *this;
 }
 
-bool Matrix::operator==(const Matrix &other) const {
-  return EqMatrix(other);
-}
+bool Matrix::operator==(const Matrix &other) const { return EqMatrix(other); }
 
-bool Matrix::operator!=(const Matrix &other) const {
-  return !EqMatrix(other);
-}
+bool Matrix::operator!=(const Matrix &other) const { return !EqMatrix(other); }
 
 Matrix Matrix::operator+(const Matrix &other) const {
   Matrix result(*this);
@@ -257,7 +252,7 @@ Matrix &Matrix::operator=(Matrix &&other) {
 std::ostream &operator<<(std::ostream &os, const Matrix &matrix) {
   for (int i = 0; i < matrix.GetRows(); ++i) {
     for (int j = 0; j < matrix.GetColumns(); ++j) {
-        os << matrix(i, j) << " ";
+      os << matrix(i, j) << " ";
     }
     os << std::endl;
   }
