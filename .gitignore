@@ -50,7 +50,8 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# VSCode
+# IDE
 .vscode/
 build*
 .DS_Store
+.idea/
