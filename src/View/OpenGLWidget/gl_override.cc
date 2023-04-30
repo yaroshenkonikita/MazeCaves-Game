@@ -40,17 +40,13 @@ void QOpenGLWidgetOverride::paintGL() {
       }
     }
   }
+  glEnd();
 
+  glBegin(GL_LINE_STRIP);
   auto locations = solver.GetLocations();
-  if (!locations.empty()) {
-      for (int i = 0; i < locations.capacity() - 1; i++) {
-          glVertex2f(width / ((locations.at(i).x + 1) / 2),
-                     height / ((locations.at(i).y + 1) / 2));
-          glVertex2f(width / ((locations.at(i + 1).x + 1) / 2),
-                     height / ((locations.at(i + 1).y + 1) / 2));
-      }
+  for (int i = 0; i < locations.size(); +i) {
+    glVertex2f(width * (locations.at(i).x + 1), height * (locations.at(i).y + 1));
   }
-
   glEnd();
   glLineWidth(2);  // толщина ребра
 }
