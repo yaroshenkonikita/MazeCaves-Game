@@ -112,11 +112,6 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end,
           locations_.pop_back();
         }
         locations_.push_back(current);
-
-        // Проверяем на выход
-        if (current.x == end.x && current.y == end.y) {
-          break;
-        }
       }
     } else {
       // Если же стены нет, то идем вперед
@@ -129,11 +124,10 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end,
         locations_.pop_back();
       }
       locations_.push_back(current);
-
-      // Проверяем на выход
-      if (current.x == end.x && current.y == end.y) {
-        break;
-      }
+    }
+    // Проверяем на выход
+    if (current.x == end.x && current.y == end.y) {
+      break;
     }
   }
 
@@ -178,12 +172,11 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end,
       }
   }
   */
-
   return locations_;
 }
 
-// void MazeSolver::PrintSolution(std::vector<Location> solution) {
-//     for (auto pos : solution) {
+// void MazeSolver::PrintSolution() {
+//     for (auto pos : locations_) {
 //         std::cout << "{" << pos.x << ", " << pos.y << "}" << std::endl;
 //     }
 // }

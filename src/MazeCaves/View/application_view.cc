@@ -35,7 +35,7 @@ void ApplicationView::on_actionLoad_Maze_triggered() {
   if (path.isEmpty()) {
     return;
   }
-
+  ui->mazeWidget->solver.GetLocations().clear();
   ui->mazeWidget->maze_model.LoadFromFile(path.toStdString());
   ui->mazeWidget->update();
 }
