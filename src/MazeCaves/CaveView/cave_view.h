@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "Cave/cave.h"
+#include <thread>
+#include <chrono>
 
 namespace Ui {
 class CaveView;
@@ -22,6 +24,8 @@ private slots:
     void on_iterateGenerationPushButton_clicked();
 
     void on_setSettingsPushButton_clicked();
+
+    void on_autoGenerationPushButton_clicked();
 
 private:
     Ui::CaveView *ui;

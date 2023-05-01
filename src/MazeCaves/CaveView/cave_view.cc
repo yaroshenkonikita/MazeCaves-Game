@@ -27,3 +27,12 @@ void CaveView::on_setSettingsPushButton_clicked() {
     ui->caveWidget->cave_model.SetDeathLimit(ui->deathLimitSpinBox->value());
 }
 
+void CaveView::on_autoGenerationPushButton_clicked() {
+    int count = ui->countIterationSpinBox->value();
+    int pause_duration = ui->pauseDurationSpinBox->value();
+    on_firstGenerationPushButton_clicked();
+    for (int i = 0; i < count; ++i) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(pause_duration));
+        on_iterateGenerationPushButton_clicked();
+    }
+}

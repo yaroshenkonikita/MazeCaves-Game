@@ -11,7 +11,7 @@ void CaveOpenGLWidgetOverride::initializeGL() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glOrtho(0, 2, 2, 0, 1, -1);
-    cave_model.GenerateCave(10, 10);
+    cave_model.GenerateCave(50, 50);
 }
 
 void CaveOpenGLWidgetOverride::paintGL() {
