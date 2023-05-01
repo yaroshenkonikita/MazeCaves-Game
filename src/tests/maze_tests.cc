@@ -64,5 +64,3 @@ TEST(Maze, escape_from_maze) {
 
     EXPECT_TRUE(loc == solver.GetLocations());
 }
-
-
