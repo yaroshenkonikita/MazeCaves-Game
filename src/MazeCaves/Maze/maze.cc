@@ -243,9 +243,6 @@ void Maze::LoadFromFile(std::string filename) {
 
 void Maze::SaveToFile(std::string filename) const {
   std::ofstream file(filename);
-  if (!file) {
-    throw std::invalid_argument("Error: The file does not exist");
-  }
   int height = matrix_.GetRows();
   int width = matrix_.GetColumns();
 
@@ -294,10 +291,6 @@ int Maze::GetRows() const { return matrix_.GetRows(); }
 
 IWasHere Maze::CheckMatrix(s21::Matrix &answer, LastPosition pos, int row,
                            int column) const {
-  if (row >= matrix_.GetRows() || column >= matrix_.GetColumns() || row < 0 ||
-      column < 0) {
-    return kWasOnce;
-  }
   if (answer(row, column) != kNoOneTimeWasHere) {
     return kWasManyTimes;
   }
