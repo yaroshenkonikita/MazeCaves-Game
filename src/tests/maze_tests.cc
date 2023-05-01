@@ -45,7 +45,12 @@ TEST(Maze, check_on_perfect_maze_generate5) {
     EXPECT_TRUE(maze.IsValidMaze());
 }
 
-TEST(Maze, escape_from_maze) {
+TEST(Maze, bad_generate) { // always random
+    s21::Maze maze;
+    EXPECT_ANY_THROW(maze.GenerateMaze(52, 50));
+}
+
+TEST(MazeSolver, escape_from_maze) {
     std::vector<s21::Location> loc{{0, 0}, {0, 1}, {0, 2},
                                    {0, 3}, {0, 4}, {0, 5},
                                    {0, 6}, {0, 7}, {0, 8},
@@ -62,4 +67,11 @@ TEST(Maze, escape_from_maze) {
     s21::MazeSolver solver;
     solver.SolveMaze({0, 0}, {9, 9}, maze);
     EXPECT_TRUE(loc == solver.GetLocations());
+}
+
+TEST(MazeSolver, escape_from_maze_invalid) {
+    s21::Maze maze;
+    maze.GenerateMaze(10, 10);
+    s21::MazeSolver solver;
+    EXPECT_ANY_THROW(solver.SolveMaze({0, 0}, {9, 34}, maze));
 }
