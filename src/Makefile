@@ -5,42 +5,38 @@
 CXX = g++
 CXX_FLAGS = -Wall -Werror -Wextra -std=c++17 -lgtest -lgtest_main --coverage
 OS = $(shell uname -s)
-PROJECT_NAME = 3DViewer
+PROJECT_NAME = MazeCaves
 APP = ../app
 BUILD = ../build
 REPORT = ../report
 DOCUMENTATION = ../documentation
 DIST = ../dist
 
+ifeq ($(OS), Darwin)
+	OPEN = open
+else
+	OPEN = xdg-open
+endif
+
 # ========================================= TARGETS ================================================
 
 all: install open_app
 
-install: uninstall
+install:
 	@echo "Building application..."
-	@cmake -B $(BUILD)
+	@cmake MazeCaves -B $(BUILD)
 	@cd $(BUILD) && make
 	@echo "Application build."
 	@echo "Moving application to folder '$(APP)'..."
 	@mkdir -p $(APP)
-ifeq ($(OS), Darwin)
-	@mv $(BUILD)/$(PROJECT_NAME).app ./$(APP)
-else
-	@mv $(BUILD)/$(PROJECT_NAME) ./$(APP)/$(PROJECT_NAME).app
-endif
+	@mv $(BUILD)/$(PROJECT_NAME) ./$(APP)/
 	@echo "Done.\n"
-	@echo "Deleting build folder..."
-	@rm -rf $(BUILD)
-	@echo "Done.\n"
-	@-ln $(APP)/$(PROJECT_NAME).app ~/Desktop/
+	@echo "Create link on Desktop..."
+	@-ln $(APP)/$(PROJECT_NAME) ~/Desktop/
 	@echo "Installation complete!"
 
 open_app:
-ifeq ($(OS), Darwin)
-	@open $(APP)/$(PROJECT_NAME).app
-else
-	@./$(APP)/$(PROJECT_NAME).app
-endif
+	@$(OPEN) $(APP)/$(PROJECT_NAME)
 
 uninstall:
 	@echo "Uninstalling start..."
@@ -49,22 +45,17 @@ uninstall:
 
 tests: clean
 	@echo "Tests start..."
-	$(CXX) $(shell find Facade tests -name "*.cc") $(CXX_FLAGS) -o test
+	$(CXX) $(shell find MazeCaves/Cave MazeCaves/Maze MazeCaves/Matrix tests -name "*.cc") $(CXX_FLAGS) -o test
 	@./test
-	@-mv *.gc* Facade
 	@echo "Tests done"
 
 gcov_report: tests
 	@echo "Make report..."
 	@mkdir -p $(REPORT)
-	@lcov -t ./test -o $(REPORT)/test.info --no-external -c -d Facade
+	@lcov -t ./test -o $(REPORT)/test.info --no-external -c -d MazeCaves
 	@genhtml -o $(REPORT)/report_html $(REPORT)/test.info
 	@echo "Report is complete"
-ifeq ($(OS), Darwin)
-	@open $(REPORT)/report_html/index.html
-else
-	@xdg-open $(REPORT)/report_html/index.html
-endif	
+	@$(OPEN) $(REPORT)/report_html/index.html
 
 
 
@@ -76,21 +67,17 @@ dist: clean
 dvi:
 	@doxygen Doxyfile
 	@cp -r images $(DOCUMENTATION)/html
-ifeq ($(OS), Darwin)
-	@open $(DOCUMENTATION)/html/index.html
-else
-	@xdg-open $(DOCUMENTATION)/html/index.html
-endif	
+	@$(OPEN) $(DOCUMENTATION)/html/index.html
 
 clean:
 	@echo "Cleaning..."
-	@rm -rf $(REPORT) Facade/*.gc* test $(BUILD)* $(DIST) logs $(DOCUMENTATION) $(APP) *.gc* Facade/*.gc*
+	@rm -rf $(REPORT) test $(BUILD)* $(DIST) logs $(DOCUMENTATION) $(APP) *.gc*
 	@echo "Clean is done"
 
 rebuild: clean all
 
 # ========================================== STYLE =================================================
 
-style:
+style: clean
 	@clang-format -n -style=google $(shell find . \( -name "*.cc" -or -name "*.h"  -or -name "*.c" -or -name "*.cpp" \))
 	@clang-format -i -style=google $(shell find . \( -name "*.cc" -or -name "*.h"  -or -name "*.c" -or -name "*.cpp" \))
