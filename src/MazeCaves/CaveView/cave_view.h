@@ -5,6 +5,7 @@
 #include "Cave/cave.h"
 #include <thread>
 #include <chrono>
+#include <QTimer>
 
 namespace Ui {
 class CaveView;
@@ -27,8 +28,13 @@ private slots:
 
     void on_autoGenerationPushButton_clicked();
 
+    void generate_iteration();
+
 private:
     Ui::CaveView *ui;
+    QTimer *timer_;
+
+    int count = 0;
 };
 
 #endif // CAVEVIEW_H
