@@ -55,7 +55,7 @@ dkms.conf
 build*
 .DS_Store
 .idea/
-src/CMakeLists.txt.user
+CMakeLists.txt.user
 
 # CMake
 CMakeFiles
