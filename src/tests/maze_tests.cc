@@ -4,14 +4,14 @@
 
 TEST(Maze, check_on_perfect_maze) {
     s21::Maze maze;
-    maze.LoadFromFile("test.txt");
+    maze.LoadFromFile("tests/test.txt");
     EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, check_on_perfect_maze_false) { // it is same files with one different
     s21::Maze maze;
-    maze.LoadFromFile("test.txt");
-    EXPECT_ANY_THROW(maze.LoadFromFile("test_copy_invalid.txt"));
+    maze.LoadFromFile("tests/test.txt");
+    EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_copy_invalid.txt"));
     EXPECT_TRUE(maze.IsValidMaze());
 }
 
@@ -58,9 +58,8 @@ TEST(Maze, escape_from_maze) {
                                    {8, 5}, {9, 5}, {9, 6},
                                    {9, 7}, {9, 8}, {9, 9}};
     s21::Maze maze;
-    maze.LoadFromFile("test.txt");
+    maze.LoadFromFile("tests/test.txt");
     s21::MazeSolver solver;
     solver.SolveMaze({0, 0}, {9, 9}, maze);
-
     EXPECT_TRUE(loc == solver.GetLocations());
 }

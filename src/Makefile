@@ -47,12 +47,15 @@ tests: clean
 	@echo "Tests start..."
 	$(CXX) $(shell find MazeCaves/Cave MazeCaves/Maze MazeCaves/Matrix tests -name "*.cc") $(CXX_FLAGS) -o test
 	@./test
+	@mv *maze.gc* MazeCaves/Maze
+	@mv *maze_solver.gc* MazeCaves/Maze
+	@mv *cave.gc* MazeCaves/Cave
 	@echo "Tests done"
 
 gcov_report: tests
 	@echo "Make report..."
 	@mkdir -p $(REPORT)
-	@lcov -t ./test -o $(REPORT)/test.info --no-external -c -d MazeCaves
+	@lcov -t ./test -o $(REPORT)/test.info --no-external -c -d MazeCaves/Maze -d MazeCaves/Cave
 	@genhtml -o $(REPORT)/report_html $(REPORT)/test.info
 	@echo "Report is complete"
 	@$(OPEN) $(REPORT)/report_html/index.html
@@ -71,7 +74,7 @@ dvi:
 
 clean:
 	@echo "Cleaning..."
-	@rm -rf $(REPORT) test $(BUILD)* $(DIST) logs $(DOCUMENTATION) $(APP) *.gc*
+	@rm -rf $(REPORT) test $(BUILD)* $(DIST) logs $(DOCUMENTATION) $(APP) $(shell find . -name "*.gc*")
 	@echo "Clean is done"
 
 rebuild: clean all
