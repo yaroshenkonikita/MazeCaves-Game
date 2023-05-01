@@ -60,3 +60,9 @@ CMakeLists.txt.user
 # CMake
 CMakeFiles
 CMakeCache.txt
+
+# build
+app
+dist
+documentation
+report
