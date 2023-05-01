@@ -21,6 +21,8 @@ private slots:
 
     void on_iterateGenerationPushButton_clicked();
 
+    void on_setSettingsPushButton_clicked();
+
 private:
     Ui::CaveView *ui;
 };

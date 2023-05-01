@@ -24,7 +24,10 @@
        </size>
       </property>
       <property name="text">
-       <string>X:</string>
+       <string>Width:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
@@ -72,6 +75,9 @@
         <property name="text">
          <string>Exit Y</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item>
@@ -113,6 +119,9 @@
         </property>
         <property name="text">
          <string>Exit X</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -161,6 +170,9 @@
         </property>
         <property name="text">
          <string>Start X</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -248,7 +260,10 @@
        </size>
       </property>
       <property name="text">
-       <string>Y:</string>
+       <string>Height:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
@@ -270,6 +285,9 @@
         </property>
         <property name="text">
          <string>Start Y</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
