@@ -27,7 +27,8 @@ void CaveView::on_setSettingsPushButton_clicked() {
 }
 
 void CaveView::on_autoGenerationPushButton_clicked() {
-  int remaining_iterations = ui->countIterationSpinBox->value() - 1;
+  ui->autoGenerationPushButton->setEnabled(false);
+  int remaining_iterations = ui->countIterationSpinBox->value();
   on_firstGenerationPushButton_clicked();
   QTimer* timer = new QTimer(this);
   timer->setInterval(ui->pauseDurationSpinBox->value());
@@ -37,6 +38,7 @@ void CaveView::on_autoGenerationPushButton_clicked() {
     if (--remaining_iterations <= 0) {
       timer->stop();
       delete timer;
+      ui->autoGenerationPushButton->setEnabled(true);
     }
   };
 
