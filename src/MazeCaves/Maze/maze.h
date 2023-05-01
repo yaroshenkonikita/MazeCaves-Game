@@ -12,7 +12,7 @@ namespace s21 {
 
 enum Walls { kNothing, kRightWall, kBottomWall, kBothWalls };
 
-enum CellState { kNoOneTimeWasHere, kWasOnce, kWasManyTimes };
+enum IWasHere { kNoOneTimeWasHere, kWasOnce, kWasManyTimes };
 
 enum LastPosition { kCenter, kUp, kLeft, kRight, kDown };
 
@@ -34,7 +34,7 @@ class Maze {
 
  private:
   int GetRandomInt() const;
-  CellState CheckMatrix(s21::Matrix &answer, LastPosition pos = kCenter, int row = 0, int column = 0) const;
+  IWasHere CheckMatrix(s21::Matrix &answer, LastPosition pos = kCenter, int row = 0, int column = 0) const;
 
   Matrix matrix_{};
 };

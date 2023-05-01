@@ -292,7 +292,7 @@ int Maze::GetColumns() const { return matrix_.GetColumns(); }
 
 int Maze::GetRows() const { return matrix_.GetRows(); }
 
-CellState Maze::CheckMatrix(s21::Matrix &answer, LastPosition pos, int row, int column) const {
+IWasHere Maze::CheckMatrix(s21::Matrix &answer, LastPosition pos, int row, int column) const {
     if (row >= matrix_.GetRows() || column >= matrix_.GetColumns() ||
         row < 0 || column < 0) {
         return kWasOnce;
