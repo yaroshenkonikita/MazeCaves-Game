@@ -55,7 +55,6 @@ void ApplicationView::on_solveMazePushButton_clicked() {
 }
 
 void ApplicationView::on_actionOpenApp_triggered() {
-    CaveView a;
-    a.exec();
+  CaveView a;
+  a.exec();
 }
-

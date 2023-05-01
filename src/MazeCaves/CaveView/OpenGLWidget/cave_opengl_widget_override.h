@@ -13,20 +13,19 @@
  * работе с объектом
  */
 class CaveOpenGLWidgetOverride : public QOpenGLWidget {
-    Q_OBJECT
-public:
-    CaveOpenGLWidgetOverride(QWidget *parent = nullptr);
-    /**
-     * @brief Перегрузка метода initializeGL для инициализации OpenGL в виджете
-     */
-    void initializeGL() override;
-    /**
-     * @brief Перегрузка метода paintGL для правильной отрисовки объекта на
-     * виджете
-     */
-    void paintGL() override;
-    s21::Cave cave_model;
+  Q_OBJECT
+ public:
+  CaveOpenGLWidgetOverride(QWidget *parent = nullptr);
+  /**
+   * @brief Перегрузка метода initializeGL для инициализации OpenGL в виджете
+   */
+  void initializeGL() override;
+  /**
+   * @brief Перегрузка метода paintGL для правильной отрисовки объекта на
+   * виджете
+   */
+  void paintGL() override;
+  s21::Cave cave_model;
 };
-
 
 #endif  // CAVEOPENGLWIDGETOVERRIDE_H_

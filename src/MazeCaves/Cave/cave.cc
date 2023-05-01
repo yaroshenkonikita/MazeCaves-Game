@@ -25,9 +25,7 @@ Matrix &Cave::GenerateCave(int height, int width) {
   return matrix_;
 }
 
-Matrix Cave::GetCaveMatrix() {
-    return matrix_;
-}
+Matrix Cave::GetCaveMatrix() { return matrix_; }
 
 void Cave::IterateCave() {
   Matrix old_map(matrix_);

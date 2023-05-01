@@ -1,8 +1,8 @@
 #ifndef MAZE_SRC_CAVE_H_
 #define MAZE_SRC_CAVE_H_
 
- #include <iostream>
 #include <fstream>
+#include <iostream>
 #include <random>
 #include <vector>
 
@@ -16,7 +16,10 @@ class Cave {
  public:
   Cave() : chance_to_spawn_(0.3), birth_limit_(3), death_limit_(3) {}
 
-  Cave(double chance_to_spawn, int birth_limit, int death_limit) : chance_to_spawn_(chance_to_spawn), birth_limit_(birth_limit), death_limit_(death_limit) {}
+  Cave(double chance_to_spawn, int birth_limit, int death_limit)
+      : chance_to_spawn_(chance_to_spawn),
+        birth_limit_(birth_limit),
+        death_limit_(death_limit) {}
 
   Matrix &GenerateCave(int height, int width);
 

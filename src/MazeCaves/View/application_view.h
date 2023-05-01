@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <stdexcept>
+
 #include "CaveView/cave_view.h"
 
 QT_BEGIN_NAMESPACE
@@ -28,7 +29,7 @@ class ApplicationView : public QMainWindow {
 
   void on_actionOpenApp_triggered();
 
-private:
+ private:
   Ui::ApplicationView *ui;
 };
 #endif  // APPLICATIONVIEW_H
