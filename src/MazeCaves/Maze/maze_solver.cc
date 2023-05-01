@@ -178,12 +178,11 @@ std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end,
       }
   }
   */
-
   return locations_;
 }
 
-// void MazeSolver::PrintSolution(std::vector<Location> solution) {
-//     for (auto pos : solution) {
+// void MazeSolver::PrintSolution() {
+//     for (auto pos : locations_) {
 //         std::cout << "{" << pos.x << ", " << pos.y << "}" << std::endl;
 //     }
 // }
