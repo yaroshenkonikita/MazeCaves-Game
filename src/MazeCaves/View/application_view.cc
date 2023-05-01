@@ -1,6 +1,6 @@
-#include "applicationview.h"
+#include "application_view.h"
 
-#include "./ui_applicationview.h"
+#include "./ui_application_view.h"
 
 ApplicationView::ApplicationView(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::ApplicationView) {
@@ -53,3 +53,9 @@ void ApplicationView::on_solveMazePushButton_clicked() {
   }
   ui->mazeWidget->update();
 }
+
+void ApplicationView::on_actionOpenApp_triggered() {
+    CaveView a;
+    a.exec();
+}
+

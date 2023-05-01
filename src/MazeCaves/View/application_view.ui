@@ -365,7 +365,14 @@
     <addaction name="actionSave_Maze"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuCave">
+    <property name="title">
+     <string>Cave</string>
+    </property>
+    <addaction name="actionOpenApp"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuCave"/>
   </widget>
   <action name="actionLoad_Maze">
    <property name="text">
@@ -382,12 +389,17 @@
     <string>Close</string>
    </property>
   </action>
+  <action name="actionOpenApp">
+   <property name="text">
+    <string>Open App</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>QOpenGLWidgetOverride</class>
    <extends>QWidget</extends>
-   <header>View/OpenGLWidget/gl_override.h</header>
+   <header location="global">View/OpenGLWidget/gl_override.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

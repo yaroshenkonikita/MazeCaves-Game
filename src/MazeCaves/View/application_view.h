@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <stdexcept>
+#include "CaveView/cave_view.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,7 +26,9 @@ class ApplicationView : public QMainWindow {
   void on_actionLoad_Maze_triggered();
   void on_solveMazePushButton_clicked();
 
- private:
+  void on_actionOpenApp_triggered();
+
+private:
   Ui::ApplicationView *ui;
 };
 #endif  // APPLICATIONVIEW_H

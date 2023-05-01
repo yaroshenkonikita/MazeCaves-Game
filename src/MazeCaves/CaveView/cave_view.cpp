@@ -1,0 +1,25 @@
+#include "cave_view.h"
+#include "ui_cave_view.h"
+
+CaveView::CaveView(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::CaveView)
+{
+    ui->setupUi(this);
+}
+
+CaveView::~CaveView()
+{
+    delete ui;
+}
+
+void CaveView::on_firstGenerationPushButton_clicked()
+{
+    cave_model.GenerateCave(ui->xSizeSpinBox->value(), ui->ySizeSpinBox->value());
+    update();
+}
+
+void CaveView::on_iterateGenerationPushButton_clicked()
+{
+    cave_model.IterateCave();
+}

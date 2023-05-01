@@ -41,6 +41,8 @@ class Cave {
 
   int GetDeathLimit();
 
+  Matrix GetCaveMatrix();
+
  private:
   int GetRandomInt(double p);
 

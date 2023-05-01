@@ -21,8 +21,13 @@ add_executable(${PROJECT_NAME}
         ${PROJECT_SOURCE_DIR}/main.cc
         ${PROJECT_SOURCE_DIR}/View/OpenGLWidget/gl_override.cc
         ${PROJECT_SOURCE_DIR}/View/OpenGLWidget/gl_override.h
-        ${PROJECT_SOURCE_DIR}/View/applicationview.cc
-        ${PROJECT_SOURCE_DIR}/View/applicationview.h
-        ${PROJECT_SOURCE_DIR}/View/applicationview.ui)
+        ${PROJECT_SOURCE_DIR}/View/application_view.cc
+        ${PROJECT_SOURCE_DIR}/View/application_view.h
+        ${PROJECT_SOURCE_DIR}/View/application_view.ui
+        ${PROJECT_SOURCE_DIR}/CaveView/cave_view.h
+        ${PROJECT_SOURCE_DIR}/CaveView/cave_view.cpp
+        ${PROJECT_SOURCE_DIR}/CaveView/cave_view.ui
+        ${PROJECT_SOURCE_DIR}/CaveView/OpenGLWidget/cave_opengl_widget_override.h
+        ${PROJECT_SOURCE_DIR}/CaveView/OpenGLWidget/cave_opengl_widget_override.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets Cave Maze Matrix)
