@@ -21,7 +21,7 @@ class Maze {
   Matrix &GenerateMaze(int height, int width);
 
   // Можно сделать вывод через std::cout << maze
-//  void PrintMaze() const;
+  //  void PrintMaze() const;
 
   void SaveToFile(std::string filename) const;
 
@@ -34,7 +34,8 @@ class Maze {
 
  private:
   int GetRandomInt() const;
-  IWasHere CheckMatrix(s21::Matrix &answer, LastPosition pos = kCenter, int row = 0, int column = 0) const;
+  IWasHere CheckMatrix(s21::Matrix &answer, LastPosition pos = kCenter,
+                       int row = 0, int column = 0) const;
 
   Matrix matrix_{};
 };

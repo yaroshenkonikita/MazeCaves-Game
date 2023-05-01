@@ -26,7 +26,7 @@ class MazeSolver {
   std::vector<Location> SolveMaze(Location begin, Location end,
                                   const Maze &maze_);
 
-//      void PrintSolution();
+  //      void PrintSolution();
 
   std::vector<Location> &GetLocations();
 

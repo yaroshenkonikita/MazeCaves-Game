@@ -146,38 +146,38 @@ Matrix &Maze::GenerateMaze(int height, int width) {
   return matrix_;
 }
 
-//void Maze::PrintMaze() const {
-//  std::cout << "Walls:" << std::endl;
-//  for (int i = 0; i < matrix_.GetRows(); ++i) {
-//    for (int j = 0; j < matrix_.GetColumns(); ++j) {
-//      std::cout << matrix_(i, j);
-//    }
-//    std::cout << std::endl;
-//  }
+// void Maze::PrintMaze() const {
+//   std::cout << "Walls:" << std::endl;
+//   for (int i = 0; i < matrix_.GetRows(); ++i) {
+//     for (int j = 0; j < matrix_.GetColumns(); ++j) {
+//       std::cout << matrix_(i, j);
+//     }
+//     std::cout << std::endl;
+//   }
 //
-//  std::cout << "LABIRINT:" << std::endl;
-//  for (int i = 0; i < matrix_.GetColumns(); ++i) {
-//    std::cout << " _";
-//  }
+//   std::cout << "LABIRINT:" << std::endl;
+//   for (int i = 0; i < matrix_.GetColumns(); ++i) {
+//     std::cout << " _";
+//   }
 //
-//  std::cout << std::endl;
-//  for (int i = 0; i < matrix_.GetRows(); ++i) {
-//    std::cout << "|";
-//    for (int j = 0; j < matrix_.GetColumns(); ++j) {
-//      if (matrix_(i, j) >= kBottomWall) {
-//        std::cout << "_";
-//      } else {
-//        std::cout << " ";
-//      }
-//      if (matrix_(i, j) >= kRightWall && matrix_(i, j) != kBottomWall) {
-//        std::cout << "|";
-//      } else {
-//        std::cout << " ";
-//      }
-//    }
-//    std::cout << std::endl;
-//  }
-//}
+//   std::cout << std::endl;
+//   for (int i = 0; i < matrix_.GetRows(); ++i) {
+//     std::cout << "|";
+//     for (int j = 0; j < matrix_.GetColumns(); ++j) {
+//       if (matrix_(i, j) >= kBottomWall) {
+//         std::cout << "_";
+//       } else {
+//         std::cout << " ";
+//       }
+//       if (matrix_(i, j) >= kRightWall && matrix_(i, j) != kBottomWall) {
+//         std::cout << "|";
+//       } else {
+//         std::cout << " ";
+//       }
+//     }
+//     std::cout << std::endl;
+//   }
+// }
 
 void Maze::LoadFromFile(std::string filename) {
   std::ifstream file(filename);
@@ -208,7 +208,7 @@ void Maze::LoadFromFile(std::string filename) {
     for (int j = 0, k = 0; j < width; ++j, k += 2) {
       char symbol = line.at(k);
       if (symbol != '0' && symbol != '1') {
-          matrix_ = origin;
+        matrix_ = origin;
         throw std::invalid_argument(
             "Error: The file must contain only ones and zeros");
       }
@@ -225,7 +225,7 @@ void Maze::LoadFromFile(std::string filename) {
     for (int j = 0, k = 0; j < width; ++j, k += 2) {
       char symbol = line.at(k);
       if (symbol != '0' && symbol != '1') {
-          matrix_ = origin;
+        matrix_ = origin;
         throw std::invalid_argument(
             "Error: The file must contain only ones and zeros");
       }
@@ -236,8 +236,8 @@ void Maze::LoadFromFile(std::string filename) {
   }
   file.close();
   if (!IsValidMaze()) {
-      matrix_ = origin;
-      throw std::invalid_argument("Invalid maze in file");
+    matrix_ = origin;
+    throw std::invalid_argument("Invalid maze in file");
   }
 }
 
@@ -292,61 +292,66 @@ int Maze::GetColumns() const { return matrix_.GetColumns(); }
 
 int Maze::GetRows() const { return matrix_.GetRows(); }
 
-IWasHere Maze::CheckMatrix(s21::Matrix &answer, LastPosition pos, int row, int column) const {
-    if (row >= matrix_.GetRows() || column >= matrix_.GetColumns() ||
-        row < 0 || column < 0) {
-        return kWasOnce;
-    }
-    if (answer(row, column) != kNoOneTimeWasHere) {
-        return kWasManyTimes;
-    }
-    answer(row, column) = kWasOnce;
-    if (pos != kUp) {
-        if (row != 0) {
-            if (matrix_(row - 1, column) != s21::kBothWalls && matrix_(row - 1, column) != s21::kBottomWall) {
-                if (CheckMatrix(answer, kDown, row - 1, column) == kWasManyTimes) {
-                    return kWasManyTimes;
-                }
-            }
-        }
-    }
-    if (pos != kRight) {
-        if (matrix_(row, column) != s21::kBothWalls && matrix_(row, column) != s21::kRightWall) {
-            if (CheckMatrix(answer, kLeft, row, column + 1) == kWasManyTimes) {
-                return kWasManyTimes;
-            }
-        }
-    }
-    if (pos != kLeft) {
-        if (column != 0) {
-            if (matrix_(row, column - 1) != s21::kBothWalls && matrix_(row, column - 1) != s21::kRightWall) {
-                if (CheckMatrix(answer, kRight, row, column - 1) == kWasManyTimes) {
-                    return kWasManyTimes;
-                }
-            }
-        }
-    }
-    if (pos != kDown) {
-        if (matrix_(row, column) != s21::kBothWalls && matrix_(row, column) != s21::kBottomWall) {
-            if (CheckMatrix(answer, kUp, row + 1, column) == kWasManyTimes) {
-                return kWasManyTimes;
-            }
-        }
-    }
+IWasHere Maze::CheckMatrix(s21::Matrix &answer, LastPosition pos, int row,
+                           int column) const {
+  if (row >= matrix_.GetRows() || column >= matrix_.GetColumns() || row < 0 ||
+      column < 0) {
     return kWasOnce;
+  }
+  if (answer(row, column) != kNoOneTimeWasHere) {
+    return kWasManyTimes;
+  }
+  answer(row, column) = kWasOnce;
+  if (pos != kUp) {
+    if (row != 0) {
+      if (matrix_(row - 1, column) != s21::kBothWalls &&
+          matrix_(row - 1, column) != s21::kBottomWall) {
+        if (CheckMatrix(answer, kDown, row - 1, column) == kWasManyTimes) {
+          return kWasManyTimes;
+        }
+      }
+    }
+  }
+  if (pos != kRight) {
+    if (matrix_(row, column) != s21::kBothWalls &&
+        matrix_(row, column) != s21::kRightWall) {
+      if (CheckMatrix(answer, kLeft, row, column + 1) == kWasManyTimes) {
+        return kWasManyTimes;
+      }
+    }
+  }
+  if (pos != kLeft) {
+    if (column != 0) {
+      if (matrix_(row, column - 1) != s21::kBothWalls &&
+          matrix_(row, column - 1) != s21::kRightWall) {
+        if (CheckMatrix(answer, kRight, row, column - 1) == kWasManyTimes) {
+          return kWasManyTimes;
+        }
+      }
+    }
+  }
+  if (pos != kDown) {
+    if (matrix_(row, column) != s21::kBothWalls &&
+        matrix_(row, column) != s21::kBottomWall) {
+      if (CheckMatrix(answer, kUp, row + 1, column) == kWasManyTimes) {
+        return kWasManyTimes;
+      }
+    }
+  }
+  return kWasOnce;
 }
 
 bool Maze::IsValidMaze() const {
-    s21::Matrix answer{matrix_.GetRows(), matrix_.GetColumns()};
-    if (CheckMatrix(answer) == kWasManyTimes) {
+  s21::Matrix answer{matrix_.GetRows(), matrix_.GetColumns()};
+  if (CheckMatrix(answer) == kWasManyTimes) {
+    return false;
+  }
+  for (int i = 0; i < answer.GetRows(); ++i) {
+    for (int j = 0; j < answer.GetColumns(); ++j) {
+      if (answer(i, j) != kWasOnce) {
         return false;
+      }
     }
-    for (int i = 0; i < answer.GetRows(); ++i) {
-        for (int j = 0; j < answer.GetColumns(); ++j) {
-            if (answer(i, j) != kWasOnce) {
-                return false;
-            }
-        }
-    }
-    return true;
+  }
+  return true;
 }
