@@ -58,19 +58,6 @@ int Cave::FindNeighboursCount(Matrix &map, int rowPos, int colPos) {
   return count;
 }
 
-void Cave::PrintCave() {
-  for (int i = 0; i < matrix_.GetRows(); ++i) {
-    for (int j = 0; j < matrix_.GetColumns(); ++j) {
-      if (matrix_(i, j)) {
-        std::cout << "#";
-      } else {
-        std::cout << " ";
-      }
-    }
-    std::cout << std::endl;
-  }
-}
-
 void Cave::LoadFromFile(std::string filename) {
   std::ifstream file(filename);
   if (!file) {
