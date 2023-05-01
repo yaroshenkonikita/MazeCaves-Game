@@ -23,7 +23,6 @@ private slots:
 
 private:
     Ui::CaveView *ui;
-    s21::Cave cave_model;
 };
 
 #endif // CAVEVIEW_H

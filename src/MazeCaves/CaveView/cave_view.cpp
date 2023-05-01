@@ -15,11 +15,12 @@ CaveView::~CaveView()
 
 void CaveView::on_firstGenerationPushButton_clicked()
 {
-    cave_model.GenerateCave(ui->xSizeSpinBox->value(), ui->ySizeSpinBox->value());
-    update();
+    ui->caveWidget->cave_model.GenerateCave(ui->xSizeSpinBox->value(), ui->ySizeSpinBox->value());
+    ui->caveWidget->update();
 }
 
 void CaveView::on_iterateGenerationPushButton_clicked()
 {
-    cave_model.IterateCave();
+    ui->caveWidget->cave_model.IterateCave();
+    ui->caveWidget->update();
 }
