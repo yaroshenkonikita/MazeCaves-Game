@@ -16,6 +16,43 @@ TEST(Maze,
   EXPECT_TRUE(maze.IsValidMaze());
 }
 
+TEST(Maze, parsing_file_no_exist) {
+    s21::Maze maze;
+    maze.LoadFromFile("tests/test.txt");
+    EXPECT_ANY_THROW(maze.LoadFromFile("no_file.txt"));
+    EXPECT_TRUE(maze.IsValidMaze());
+}
+
+TEST(Maze, invalid_data_parsing) {
+    s21::Maze maze;
+    maze.LoadFromFile("tests/test.txt");
+    EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_invalid_data.txt"));
+    EXPECT_TRUE(maze.IsValidMaze());
+}
+
+TEST(Maze, invalid_data_parsing2) {
+    s21::Maze maze;
+    maze.LoadFromFile("tests/test.txt");
+    EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_invalid_data2.txt"));
+    EXPECT_TRUE(maze.IsValidMaze());
+}
+
+TEST(Maze, invalid_data_parsing3) {
+    s21::Maze maze;
+    maze.LoadFromFile("tests/test.txt");
+    EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_invalid_data3.txt"));
+    EXPECT_TRUE(maze.IsValidMaze());
+}
+
+TEST(Maze, save) {
+    s21::Maze maze;
+    maze.LoadFromFile("tests/test.txt");
+    maze.SaveToFile("check_test_save.txt");
+    s21::Maze copy;
+    copy.LoadFromFile("check_test_save.txt");
+    EXPECT_TRUE(copy.GetMatrix() == maze.GetMatrix());
+}
+
 TEST(Maze, check_on_perfect_maze_generate) {  // always random
   s21::Maze maze;
   maze.GenerateMaze(50, 50);
