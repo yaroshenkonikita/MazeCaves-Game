@@ -71,10 +71,10 @@ TEST(Cave, SaveCave) {
     int width = 30;
     s21::Cave cave;
     cave.GenerateCave(height, width);
-    cave.SaveToFile("tests/SavedCave.txt");
+    cave.SaveToFile("SavedCave.txt");
 
     s21::Cave loadCave;
-    loadCave.LoadFromFile("tests/SavedCave.txt");
+    loadCave.LoadFromFile("SavedCave.txt");
     EXPECT_TRUE(cave.GetCaveMatrix() == loadCave.GetCaveMatrix());
 }
 

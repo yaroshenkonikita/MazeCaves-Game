@@ -47,7 +47,7 @@ tests: clean
 	@echo "Tests start..."
 	$(CXX) $(shell find MazeCaves/Cave MazeCaves/Maze MazeCaves/Matrix tests -name "*.cc") $(CXX_FLAGS) -o test
 	@./test
-	@rm check_test_save.txt
+	@-rm check_test_save.txt SavedCave.txt
 	@mv *maze.gc* MazeCaves/Maze
 	@mv *maze_solver.gc* MazeCaves/Maze
 	@mv *cave.gc* MazeCaves/Cave
