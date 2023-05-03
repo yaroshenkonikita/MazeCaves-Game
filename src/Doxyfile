@@ -908,7 +908,14 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = Facade/part_object.h Facade/Mediator/object_model.h SettingsClass/options_t.h SettingsClass/options.h QClass/OpenGLWidget/gl_override.h QClass/controller.h README.md
+INPUT                  = MazeCaves/CaveView/cave_view.h \
+                         MazeCaves/CaveView/OpenGLWidget/cave_opengl_widget_override.h \
+                         MazeCaves/Cave/cave.h \
+                         MazeCaves/Matrix/matrix_oop.h \
+                         MazeCaves/Maze/maze.h \
+                         MazeCaves/Maze/maze_solver.h \
+                         MazeCaves/View/OpenGLWidget/gl_override.h \
+                         MazeCaves/View/application_view.h
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
