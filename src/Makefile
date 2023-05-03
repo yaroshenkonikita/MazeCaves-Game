@@ -75,7 +75,7 @@ dvi:
 
 clean:
 	@echo "Cleaning..."
-	@rm -rf $(shell find .. \( -name "*.gc*" -or -name "*build*" -or -name "test" -or -name "report" -or -name "dist" -or -name "logs" -or -name "documentation" \))
+	@-rm -rf $(shell find .. \( -name "*.gc*" -or -name "*build*" -or -name "test" -or -name "report" -or -name "dist" -or -name "logs" -or -name "documentation" \))
 	@echo "Clean is done"
 
 rebuild: clean all
