@@ -1,5 +1,5 @@
-#ifndef A1_MAZE_A_SRC_MAZE_CAVES_CAVE_CAVE_H_
-#define A1_MAZE_A_SRC_MAZE_CAVES_CAVE_CAVE_H_
+#ifndef A1_MAZE_1_SRC_MAZE_CAVES_CAVE_CAVE_H_
+#define A1_MAZE_1_SRC_MAZE_CAVES_CAVE_CAVE_H_
 
 #include <fstream>
 #include <iostream>
@@ -84,4 +84,4 @@ class Cave {
 
 }  // namespace s21
 
-#endif  // A1_MAZE_A_SRC_MAZE_CAVES_CAVE_CAVE_H_
+#endif  // A1_MAZE_1_SRC_MAZE_CAVES_CAVE_CAVE_H_

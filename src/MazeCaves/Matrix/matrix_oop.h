@@ -1,5 +1,5 @@
-#ifndef A1_MAZE_A_SRC_MAZE_CAVES_MATRIX_MATRIX_H_
-#define A1_MAZE_A_SRC_MAZE_CAVES_MATRIX_MATRIX_H_
+#ifndef A1_MAZE_1_SRC_MAZE_CAVES_MATRIX_MATRIX_H_
+#define A1_MAZE_1_SRC_MAZE_CAVES_MATRIX_MATRIX_H_
 
 #include <algorithm>
 #include <cmath>
@@ -67,4 +67,4 @@ Matrix operator*(Matrix other, double num);
 
 }  // namespace s21
 
-#endif  // A1_MAZE_A_SRC_MAZE_CAVES_MATRIX_MATRIX_H_
+#endif  // A1_MAZE_1_SRC_MAZE_CAVES_MATRIX_MATRIX_H_

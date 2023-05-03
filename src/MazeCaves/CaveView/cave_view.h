@@ -1,5 +1,5 @@
-#ifndef A1_MAZE_A_SRC_MAZE_CAVES_CAVE_VIEW_CAVE_VIEW_H_
-#define A1_MAZE_A_SRC_MAZE_CAVES_CAVE_VIEW_CAVE_VIEW_H_
+#ifndef A1_MAZE_1_SRC_MAZE_CAVES_CAVE_VIEW_CAVE_VIEW_H_
+#define A1_MAZE_1_SRC_MAZE_CAVES_CAVE_VIEW_CAVE_VIEW_H_
 
 #include <QDialog>
 #include <QTimer>
@@ -33,4 +33,4 @@ class CaveView : public QDialog {
   Ui::CaveView *ui;  ///< Указатель на UI
 };
 
-#endif  // A1_MAZE_A_SRC_MAZE_CAVES_CAVE_VIEW_CAVE_VIEW_H_
+#endif  // A1_MAZE_1_SRC_MAZE_CAVES_CAVE_VIEW_CAVE_VIEW_H_

@@ -1,5 +1,5 @@
-#ifndef A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
-#define A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
+#ifndef A1_MAZE_1_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
+#define A1_MAZE_1_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
 
 #include <queue>
 #include <vector>
@@ -32,4 +32,4 @@ class MazeSolver {
 
 }  // namespace s21
 
-#endif  // A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
+#endif  // A1_MAZE_1_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
