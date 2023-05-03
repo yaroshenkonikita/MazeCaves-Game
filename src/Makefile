@@ -40,7 +40,7 @@ open_app:
 
 uninstall:
 	@echo "Uninstalling start..."
-	@-rm -rf $(APP) ~/Desktop/$(PROJECT_NAME).app
+	@-rm -rf $(APP) ~/Desktop/$(PROJECT_NAME)
 	@echo "Uninstalling success"
 
 tests: clean
@@ -70,7 +70,6 @@ dist: clean
 
 dvi:
 	@doxygen Doxyfile
-	@cp -r images $(DOCUMENTATION)/html
 	@$(OPEN) $(DOCUMENTATION)/html/index.html
 
 clean:
