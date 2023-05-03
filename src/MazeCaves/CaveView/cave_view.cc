@@ -44,3 +44,23 @@ void CaveView::on_autoGenerationPushButton_clicked() {
   connect(timer, &QTimer::timeout, this, check_iterations);
   timer->start();
 }
+
+void CaveView::on_saveCavePushButton_clicked() {
+  QString path = QFileDialog::getSaveFileName(this, tr("Save file"), "name.txt",
+                                              tr("Text files (*.txt)"));
+  if (path.isEmpty()) {
+    return;
+  }
+  ui->caveWidget->cave_model.SaveToFile(path.toStdString());
+  ui->caveWidget->update();
+}
+
+void CaveView::on_loadCavePushButton_clicked() {
+  QString path = QFileDialog::getOpenFileName(this, tr("Open File"), ".",
+                                              tr("Text files (*.txt)"));
+  if (path.isEmpty()) {
+    return;
+  }
+  ui->caveWidget->cave_model.LoadFromFile(path.toStdString());
+  ui->caveWidget->update();
+}
