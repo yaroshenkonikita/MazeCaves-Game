@@ -8,6 +8,9 @@
 
 namespace s21 {
 
+/**
+ * @brief Имплементация класса boost::numeric::ublas::Matrix(Ранний проект)
+ */
 class Matrix {
  public:
   Matrix();
