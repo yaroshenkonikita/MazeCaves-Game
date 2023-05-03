@@ -1,5 +1,5 @@
-#ifndef APPLICATIONVIEW_H
-#define APPLICATIONVIEW_H
+#ifndef A1_MAZE_A_SRC_MAZE_CAVES_VIEW_APPLICATION_VIEW_H_
+#define A1_MAZE_A_SRC_MAZE_CAVES_VIEW_APPLICATION_VIEW_H_
 
 #include <QFileDialog>
 #include <QMainWindow>
@@ -16,7 +16,6 @@ QT_END_NAMESPACE
 
 class ApplicationView : public QMainWindow {
   Q_OBJECT
-
  public:
   ApplicationView(QWidget *parent = nullptr);
   ~ApplicationView();
@@ -26,10 +25,10 @@ class ApplicationView : public QMainWindow {
   void on_actionSave_Maze_triggered();
   void on_actionLoad_Maze_triggered();
   void on_solveMazePushButton_clicked();
-
   void on_actionOpenApp_triggered();
 
  private:
   Ui::ApplicationView *ui;
 };
-#endif  // APPLICATIONVIEW_H
+
+#endif  // A1_MAZE_A_SRC_MAZE_CAVES_VIEW_APPLICATION_VIEW_H_

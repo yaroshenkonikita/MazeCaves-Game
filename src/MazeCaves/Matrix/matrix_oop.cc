@@ -220,14 +220,12 @@ Matrix Matrix::operator*(const Matrix &other) const {
   return result *= other;
 }
 
-Matrix operator*(double num, Matrix &other) {
-  Matrix result(other);
-  return result *= num;
+Matrix operator*(double num, Matrix other) {
+  return other *= num;
 }
 
-Matrix operator*(Matrix &other, double num) {
-  Matrix result(other);
-  return result *= num;
+Matrix operator*(Matrix other, double num) {
+  return other *= num;
 }
 
 Matrix &Matrix::operator=(const Matrix &other) {
