@@ -36,7 +36,7 @@ install:
 	@echo "Installation complete!"
 
 open_app:
-	@$(OPEN) $(APP)/$(PROJECT_NAME)
+	@./$(APP)/$(PROJECT_NAME)
 
 uninstall:
 	@echo "Uninstalling start..."
