@@ -35,15 +35,16 @@ install:
 	@-ln $(APP)/$(PROJECT_NAME) ~/Desktop/
 	@echo "Installation complete!"
 
-open_app:
+open_app: ../app
 	@./$(APP)/$(PROJECT_NAME)
 
-uninstall:
+uninstall: ../app
 	@echo "Uninstalling start..."
 	@-rm -rf $(APP) ~/Desktop/$(PROJECT_NAME)
 	@echo "Uninstalling success"
 
-tests: clean
+tests:
+	@-rm $(shell find . -name "*.gc*")
 	@echo "Tests start..."
 	$(CXX) $(shell find MazeCaves/Cave MazeCaves/Maze MazeCaves/Matrix tests -name "*.cc") $(CXX_FLAGS) -o test
 	@./test
@@ -74,7 +75,7 @@ dvi:
 
 clean:
 	@echo "Cleaning..."
-	@rm -rf $(REPORT) test $(BUILD)* $(DIST) logs $(DOCUMENTATION) $(APP) $(shell find . -name "*.gc*")
+	@rm -rf $(shell find .. \( -name "*.gc*" -or -name "*build*" -or -name "test" -or -name "report" -or -name "dist" -or -name "logs" -or -name "documentation" \))
 	@echo "Clean is done"
 
 rebuild: clean all
