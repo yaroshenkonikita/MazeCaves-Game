@@ -1,7 +1,6 @@
-#ifndef MAZE_SRC_MAZE_H_
-#define MAZE_SRC_MAZE_H_
+#ifndef A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_H_
+#define A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_H_
 
-// #include <iostream>
 #include <fstream>
 #include <random>
 #include <vector>
@@ -10,36 +9,84 @@
 
 namespace s21 {
 
-enum Walls { kNothing, kRightWall, kBottomWall, kBothWalls };
+/**
+ * @brief Обозначение стен в матрице лабиринта
+ */
+enum Walls {
+  kNothing,     ///< Нет стен
+  kRightWall,   ///< Стена справа
+  kBottomWall,  ///< Стена снизу
+  kBothWalls    ///< Стена справа и снизу
+};
 
-enum IWasHere { kNoOneTimeWasHere, kWasOnce, kWasManyTimes };
+/**
+ * @brief Enum для проверки лабиринта на идеальность
+ */
+enum IWasHere {
+  kNoOneTimeWasHere,  ///< никого не было
+  kWasOnce,           ///< Был один раз
+  kWasManyTimes       /// Был несколько раз
+};
 
-enum LastPosition { kCenter, kUp, kLeft, kRight, kDown };
+/**
+ * @brief Enum для запоминания позиции во время проверки на идеальность
+ */
+enum LastPosition {
+  kCenter,  /// Только пришел на эту клетку
+  kUp,      ///< Пришел сверху
+  kLeft,    ///< Пришел слева
+  kRight,   ///< Пришел справа
+  kDown     ///< Пришел снизу
+};
 
+/**
+ * @brief Класс для работы с матрицой лабиринта
+ */
 class Maze {
  public:
+  /**
+   * @brief Генерация лабиринта
+   * @param height высота
+   * @param width ширина
+   * @return ссылку на матрицу лабиринта
+   */
   Matrix &GenerateMaze(int height, int width);
-
-  // Можно сделать вывод через std::cout << maze
-  //  void PrintMaze() const;
-
+  /**
+   * @brief Сохранить лабиринт
+   * @param filename путь до файла
+   */
   void SaveToFile(std::string filename) const;
-
+  /**
+   * @brief Загрузить лабиринт
+   * @param filename путь до файла
+   */
   void LoadFromFile(std::string filename);
 
-  const Matrix &GetMatrix() const;
-  int GetColumns() const;
-  int GetRows() const;
-  bool IsValidMaze() const;
+  [[nodiscard]] const Matrix &GetMatrix()
+      const;  ///< Получить матрицу лабиринта
+  [[nodiscard]] int GetColumns() const;  ///< Получить ширину лабиринта
+  [[nodiscard]] int GetRows() const;  ///< Получить высоту лабиринта
 
  private:
-  int GetRandomInt() const;
+  [[nodiscard]] bool IsValidMaze() const;  ///< Проверить матрицу на идеальность
+  [[nodiscard]] int GetRandomInt() const;  ///< Получить случайное число
+  /**
+   * @brief Рекурсивная функция для прохождения всего лабиринта
+   * @details Идет во все стороны от каждой точки, если есть зацикленные позиции
+   * - он их найдет. А потом проходит по всему массиву и проверяет на то что он
+   * везде прошел.
+   * @param answer матрица отслеживания прохождения
+   * @param pos позиция из которой вызвалась рекурсивная функция
+   * @param row текущая строчка
+   * @param column текущая колонка
+   * @return результат проверки
+   */
   IWasHere CheckMatrix(s21::Matrix &answer, LastPosition pos = kCenter,
                        int row = 0, int column = 0) const;
 
-  Matrix matrix_{};
+  Matrix matrix_{};  ///< Матрица лабиринта
 };
 
 }  // namespace s21
 
-#endif  // MAZE_SRC_MAZE_H_
+#endif  // A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_H_

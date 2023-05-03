@@ -1,5 +1,5 @@
-#ifndef MAZE_SRC_MAZE_SOLVER_H_
-#define MAZE_SRC_MAZE_SOLVER_H_
+#ifndef A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
+#define A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_
 
 #include <queue>
 #include <vector>
@@ -21,23 +21,15 @@ struct Location {
 
 class MazeSolver {
  public:
-  //    MazeSolver(Maze maze) : maze_(maze) {}
-
-  std::vector<Location> SolveMaze(Location begin, Location end,
-                                  const Maze &maze_);
-
-  //      void PrintSolution();
-
-  std::vector<Location> &GetLocations();
+  MazeSolver() = delete;
+  ~MazeSolver() = delete;
+  static std::vector<Location> SolveMaze(Location begin, Location end,
+                                         const Maze &maze_);
 
  private:
-  //    bool CanMove(Location current, Location turn, Matrix matrix_);
-
-  bool CheckForwardWall(Location current, Location turn, Matrix matrix_);
-
-  std::vector<Location> locations_;
+  static bool CheckForwardWall(Location current, Location turn, Matrix matrix_);
 };
 
 }  // namespace s21
 
-#endif  // MAZE_SRC_MAZE_SOLVER_H_
+#endif  // A1_MAZE_A_SRC_MAZE_CAVES_MAZE_MAZE_SOLVER_H_

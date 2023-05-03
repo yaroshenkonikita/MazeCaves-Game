@@ -1,5 +1,5 @@
-#ifndef CAVEOPENGLWIDGETOVERRIDE_H_
-#define CAVEOPENGLWIDGETOVERRIDE_H_
+#ifndef A1_MAZE_A_SRC_MAZE_CAVES_CAVE_VIEW_OPENGL_WIDGET_OPENGL_WIDGET_OVERRIDE_H_
+#define A1_MAZE_A_SRC_MAZE_CAVES_CAVE_VIEW_OPENGL_WIDGET_OPENGL_WIDGET_OVERRIDE_H_
 
 #define GL_SILENCE_DEPRECATION
 
@@ -25,7 +25,7 @@ class CaveOpenGLWidgetOverride : public QOpenGLWidget {
    * виджете
    */
   void paintGL() override;
-  s21::Cave cave_model;
+  s21::Cave cave_model;  ///< Модель пещеры
 };
 
-#endif  // CAVEOPENGLWIDGETOVERRIDE_H_
+#endif  // A1_MAZE_A_SRC_MAZE_CAVES_CAVE_VIEW_OPENGL_WIDGET_OPENGL_WIDGET_OVERRIDE_H_

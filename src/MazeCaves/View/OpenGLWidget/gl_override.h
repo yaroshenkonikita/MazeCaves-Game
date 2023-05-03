@@ -1,5 +1,5 @@
-#ifndef GL_CONTROLLER_H_
-#define GL_CONTROLLER_H_
+#ifndef A1_MAZE_A_SRC_MAZE_CAVES_VIEW_OPENGL_WIDGET_GL_OVERRIDE_H_
+#define A1_MAZE_A_SRC_MAZE_CAVES_VIEW_OPENGL_WIDGET_GL_OVERRIDE_H_
 
 #define GL_SILENCE_DEPRECATION
 #include <QColorDialog>
@@ -28,8 +28,9 @@ class QOpenGLWidgetOverride : public QOpenGLWidget {
    * виджете
    */
   void paintGL() override;
-  s21::Maze maze_model;
-  s21::MazeSolver solver;
+  s21::Maze maze_model;  ///< Модель лабиринта
+  std::vector<s21::Location>
+      escape_path;  ///< Вектор для выхода из заданных позиций
 };
 
-#endif  // GL_CONTROLLER_H_
+#endif  // A1_MAZE_A_SRC_MAZE_CAVES_VIEW_OPENGL_WIDGET_GL_OVERRIDE_H_

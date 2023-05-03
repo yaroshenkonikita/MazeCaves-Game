@@ -2,12 +2,19 @@
 
 using namespace s21;
 
-int Cave::GetRandomInt(double p) {
+Cave::Cave() : chance_to_spawn_(0.3), birth_limit_(3), death_limit_(3) {}
+
+Cave::Cave(double chance_to_spawn, int birth_limit, int death_limit)
+    : chance_to_spawn_(chance_to_spawn),
+      birth_limit_(birth_limit),
+      death_limit_(death_limit) {}
+
+int Cave::GetRandomInt() {
   std::random_device rd;
   std::default_random_engine engine(rd());
   std::uniform_real_distribution<double> dist(0.0, 1.0);
   double random_num = dist(engine);
-  return random_num > p ? 0 : 1;
+  return random_num > chance_to_spawn_ ? 0 : 1;
 }
 
 Matrix &Cave::GenerateCave(int height, int width) {
@@ -19,7 +26,7 @@ Matrix &Cave::GenerateCave(int height, int width) {
   matrix_.Set(height, width);
   for (int i = 0; i < height; ++i) {
     for (int j = 0; j < width; ++j) {
-      matrix_(i, j) = GetRandomInt(chance_to_spawn_);
+      matrix_(i, j) = GetRandomInt();
     }
   }
   return matrix_;
@@ -92,9 +99,6 @@ void Cave::LoadFromFile(std::string filename) {
 
 void Cave::SaveToFile(std::string filename) {
   std::ofstream file(filename);
-  if (!file) {
-    throw std::invalid_argument("Error: The file does not exist");
-  }
   int height = matrix_.GetRows();
   int width = matrix_.GetColumns();
 
