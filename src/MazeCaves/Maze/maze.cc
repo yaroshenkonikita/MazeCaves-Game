@@ -136,48 +136,8 @@ Matrix &Maze::GenerateMaze(int height, int width) {
     }
   }
 
-  for (int col = 0; col < width - 1; ++col) {
-    if (row_set[col] != row_set[col + 1] &&
-        matrix_(height - 1, col) >= kRightWall) {
-      matrix_(height - 1, col) -= kRightWall;
-    }
-  }
-
   return matrix_;
 }
-
-// void Maze::PrintMaze() const {
-//   std::cout << "Walls:" << std::endl;
-//   for (int i = 0; i < matrix_.GetRows(); ++i) {
-//     for (int j = 0; j < matrix_.GetColumns(); ++j) {
-//       std::cout << matrix_(i, j);
-//     }
-//     std::cout << std::endl;
-//   }
-//
-//   std::cout << "LABIRINT:" << std::endl;
-//   for (int i = 0; i < matrix_.GetColumns(); ++i) {
-//     std::cout << " _";
-//   }
-//
-//   std::cout << std::endl;
-//   for (int i = 0; i < matrix_.GetRows(); ++i) {
-//     std::cout << "|";
-//     for (int j = 0; j < matrix_.GetColumns(); ++j) {
-//       if (matrix_(i, j) >= kBottomWall) {
-//         std::cout << "_";
-//       } else {
-//         std::cout << " ";
-//       }
-//       if (matrix_(i, j) >= kRightWall && matrix_(i, j) != kBottomWall) {
-//         std::cout << "|";
-//       } else {
-//         std::cout << " ";
-//       }
-//     }
-//     std::cout << std::endl;
-//   }
-// }
 
 void Maze::LoadFromFile(std::string filename) {
   std::ifstream file(filename);

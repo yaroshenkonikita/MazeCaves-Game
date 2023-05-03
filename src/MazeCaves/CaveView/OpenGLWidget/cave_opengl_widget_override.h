@@ -25,7 +25,7 @@ class CaveOpenGLWidgetOverride : public QOpenGLWidget {
    * виджете
    */
   void paintGL() override;
-  s21::Cave cave_model; ///< Модель пещеры
+  s21::Cave cave_model;  ///< Модель пещеры
 };
 
 #endif  // A1_MAZE_A_SRC_MAZE_CAVES_CAVE_VIEW_OPENGL_WIDGET_OPENGL_WIDGET_OVERRIDE_H_

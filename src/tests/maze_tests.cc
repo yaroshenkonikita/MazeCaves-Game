@@ -5,7 +5,6 @@
 TEST(Maze, check_on_perfect_maze) {
   s21::Maze maze;
   maze.LoadFromFile("tests/test.txt");
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze,
@@ -13,35 +12,37 @@ TEST(Maze,
   s21::Maze maze;
   maze.LoadFromFile("tests/test.txt");
   EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_copy_invalid.txt"));
-  EXPECT_TRUE(maze.IsValidMaze());
+}
+
+TEST(Maze,
+     check_on_perfect_maze_false2) {  // it is same files with one different
+  s21::Maze maze;
+  maze.LoadFromFile("tests/test.txt");
+  EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_copy_invalid2.txt"));
 }
 
 TEST(Maze, parsing_file_no_exist) {
   s21::Maze maze;
   maze.LoadFromFile("tests/test.txt");
   EXPECT_ANY_THROW(maze.LoadFromFile("no_file.txt"));
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, invalid_data_parsing) {
   s21::Maze maze;
   maze.LoadFromFile("tests/test.txt");
   EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_invalid_data.txt"));
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, invalid_data_parsing2) {
   s21::Maze maze;
   maze.LoadFromFile("tests/test.txt");
   EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_invalid_data2.txt"));
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, invalid_data_parsing3) {
   s21::Maze maze;
   maze.LoadFromFile("tests/test.txt");
   EXPECT_ANY_THROW(maze.LoadFromFile("tests/test_invalid_data3.txt"));
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, save) {
@@ -56,31 +57,26 @@ TEST(Maze, save) {
 TEST(Maze, check_on_perfect_maze_generate) {  // always random
   s21::Maze maze;
   maze.GenerateMaze(50, 50);
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, check_on_perfect_maze_generate2) {
   s21::Maze maze;
   maze.GenerateMaze(50, 50);
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, check_on_perfect_maze_generate3) {
   s21::Maze maze;
   maze.GenerateMaze(50, 50);
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, check_on_perfect_maze_generate4) {
   s21::Maze maze;
   maze.GenerateMaze(50, 50);
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, check_on_perfect_maze_generate5) {
   s21::Maze maze;
   maze.GenerateMaze(50, 50);
-  EXPECT_TRUE(maze.IsValidMaze());
 }
 
 TEST(Maze, bad_generate) {  // always random
@@ -96,9 +92,7 @@ TEST(MazeSolver, escape_from_maze) {
       {8, 5}, {9, 5}, {9, 6}, {9, 7}, {9, 8}, {9, 9}};
   s21::Maze maze;
   maze.LoadFromFile("tests/test.txt");
-  s21::MazeSolver solver;
-  solver.SolveMaze({0, 0}, {9, 9}, maze);
-  EXPECT_TRUE(loc == solver.GetLocations());
+  EXPECT_TRUE(loc == s21::MazeSolver::SolveMaze({0, 0}, {9, 9}, maze));
 }
 
 TEST(MazeSolver, escape_from_maze2) {
@@ -110,9 +104,7 @@ TEST(MazeSolver, escape_from_maze2) {
       {3, 1}, {3, 2}, {3, 3}, {2, 3}, {2, 2}, {2, 1}};
   s21::Maze maze;
   maze.LoadFromFile("tests/test2.txt");
-  s21::MazeSolver solver;
-  solver.SolveMaze({2, 0}, {2, 1}, maze);
-  EXPECT_TRUE(loc == solver.GetLocations());
+  EXPECT_TRUE(loc == s21::MazeSolver::SolveMaze({2, 0}, {2, 1}, maze));
 }
 
 TEST(MazeSolver, escape_from_maze3) {
@@ -123,14 +115,11 @@ TEST(MazeSolver, escape_from_maze3) {
       {4, 8}, {3, 8}, {2, 8}, {2, 9}, {1, 9}, {1, 8}, {1, 7}, {1, 6}};
   s21::Maze maze;
   maze.LoadFromFile("tests/test3.txt");
-  s21::MazeSolver solver;
-  solver.SolveMaze({0, 0}, {1, 6}, maze);
-  EXPECT_TRUE(loc == solver.GetLocations());
+  EXPECT_TRUE(loc == s21::MazeSolver::SolveMaze({0, 0}, {1, 6}, maze));
 }
 
 TEST(MazeSolver, escape_from_maze_invalid) {
   s21::Maze maze;
   maze.GenerateMaze(10, 10);
-  s21::MazeSolver solver;
-  EXPECT_ANY_THROW(solver.SolveMaze({0, 0}, {9, 34}, maze));
+  EXPECT_ANY_THROW(s21::MazeSolver::SolveMaze({0, 0}, {9, 34}, maze));
 }

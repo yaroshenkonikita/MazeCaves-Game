@@ -24,7 +24,8 @@ class MazeSolver {
   MazeSolver() = delete;
   ~MazeSolver() = delete;
   static std::vector<Location> SolveMaze(Location begin, Location end,
-                                  const Maze &maze_);
+                                         const Maze &maze_);
+
  private:
   static bool CheckForwardWall(Location current, Location turn, Matrix matrix_);
 };

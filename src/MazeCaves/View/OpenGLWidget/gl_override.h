@@ -28,8 +28,9 @@ class QOpenGLWidgetOverride : public QOpenGLWidget {
    * виджете
    */
   void paintGL() override;
-  s21::Maze maze_model; ///< Модель лабиринта
-  std::vector<s21::Location> escape_path;
+  s21::Maze maze_model;  ///< Модель лабиринта
+  std::vector<s21::Location>
+      escape_path;  ///< Вектор для выхода из заданных позиций
 };
 
 #endif  // A1_MAZE_A_SRC_MAZE_CAVES_VIEW_OPENGL_WIDGET_GL_OVERRIDE_H_

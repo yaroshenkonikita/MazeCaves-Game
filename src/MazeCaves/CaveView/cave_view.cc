@@ -1,4 +1,5 @@
 #include "cave_view.h"
+
 #include "ui_cave_view.h"
 
 CaveView::CaveView(QWidget* parent) : QDialog(parent), ui(new Ui::CaveView) {

@@ -1,4 +1,5 @@
 #include "application_view.h"
+
 #include "./ui_application_view.h"
 
 ApplicationView::ApplicationView(QWidget *parent)
@@ -45,8 +46,8 @@ void ApplicationView::on_solveMazePushButton_clicked() {
   s21::Location exit_location(ui->xExitSpinBox->value() - 1,
                               ui->yExitSpinBox->value() - 1);
   try {
-    ui->mazeWidget->escape_path = s21::MazeSolver::SolveMaze(start_location, exit_location,
-                                     ui->mazeWidget->maze_model);
+    ui->mazeWidget->escape_path = s21::MazeSolver::SolveMaze(
+        start_location, exit_location, ui->mazeWidget->maze_model);
   } catch (std::exception &e) {
     QMessageBox::warning(this, "Error", e.what());
   }

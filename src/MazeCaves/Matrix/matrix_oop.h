@@ -61,9 +61,9 @@ class Matrix {
 
   void CheckEqSize(const Matrix &other) const;
 };
-    std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
-    Matrix operator*(double num, Matrix other);
-    Matrix operator*(Matrix other, double num);
+std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
+Matrix operator*(double num, Matrix other);
+Matrix operator*(Matrix other, double num);
 
 }  // namespace s21
 

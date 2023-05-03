@@ -5,9 +5,9 @@ using namespace s21;
 Cave::Cave() : chance_to_spawn_(0.3), birth_limit_(3), death_limit_(3) {}
 
 Cave::Cave(double chance_to_spawn, int birth_limit, int death_limit)
-        : chance_to_spawn_(chance_to_spawn),
-          birth_limit_(birth_limit),
-          death_limit_(death_limit) {}
+    : chance_to_spawn_(chance_to_spawn),
+      birth_limit_(birth_limit),
+      death_limit_(death_limit) {}
 
 int Cave::GetRandomInt() {
   std::random_device rd;
@@ -99,9 +99,6 @@ void Cave::LoadFromFile(std::string filename) {
 
 void Cave::SaveToFile(std::string filename) {
   std::ofstream file(filename);
-  if (!file) {
-    throw std::invalid_argument("Error: The file does not exist");
-  }
   int height = matrix_.GetRows();
   int width = matrix_.GetColumns();
 

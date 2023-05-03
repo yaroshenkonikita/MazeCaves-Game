@@ -36,7 +36,7 @@ bool MazeSolver::CheckForwardWall(Location current, Location turn,
 }
 
 std::vector<Location> MazeSolver::SolveMaze(Location begin, Location end,
-                                            const Maze &maze_) {
+                                            const Maze& maze_) {
   if (begin.x >= maze_.GetColumns() || begin.y >= maze_.GetRows() ||
       end.x >= maze_.GetColumns() || end.y >= maze_.GetRows()) {
     throw std::invalid_argument("Begin or End position is invalid");

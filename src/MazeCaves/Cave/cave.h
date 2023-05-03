@@ -10,13 +10,13 @@
 
 namespace s21 {
 
-enum CellState { kDead, kAlive }; // Содержимое пещеры
+enum CellState { kDead, kAlive };  // Содержимое пещеры
 /**
  * @brief Класс для работы с матрицой пещеры
  */
 class Cave {
  public:
-  Cave(); ///< Дефолтный конструктор
+  Cave();  ///< Дефолтный конструктор
   /**
    * @brief Параметрезированный конструктор
    * @param chance_to_spawn шанс на спавн
@@ -24,7 +24,7 @@ class Cave {
    * @param death_limit лимит на смерть
    */
   Cave(double chance_to_spawn, int birth_limit, int death_limit);
-  ~Cave() = default; ///< Дефолтный деструктор
+  ~Cave() = default;  ///< Дефолтный деструктор
 
   /**
    * @brief Первичная генерация пещеры
@@ -33,7 +33,7 @@ class Cave {
    * @return ссылку натрицу пещеры
    */
   Matrix &GenerateCave(int height, int width);
-  void IterateCave(); ///< Последующие итерации после первичной генерации
+  void IterateCave();  ///< Последующие итерации после первичной генерации
   /**
    * @brief Сохранить пещеру в файл
    * @param filename путь до файла
@@ -60,13 +60,13 @@ class Cave {
    * @param death_limit лимит на смерть
    */
   void SetDeathLimit(int death_limit);
-  double GetChanceToSpawn(); ///< Получить шанс на спавн
-  int GetBirthLimit(); ///< Получить лимит на рождение
-  int GetDeathLimit(); ///< Получить линит на смерть
-  Matrix GetCaveMatrix(); ///< Получить матрицу пещеры
+  double GetChanceToSpawn();  ///< Получить шанс на спавн
+  int GetBirthLimit();  ///< Получить лимит на рождение
+  int GetDeathLimit();  ///< Получить линит на смерть
+  Matrix GetCaveMatrix();  ///< Получить матрицу пещеры
 
  private:
-  int GetRandomInt(); ///< Получить состояние клетки от шанса на спавн
+  int GetRandomInt();  ///< Получить состояние клетки от шанса на спавн
   /**
    * @brief Посчитать соседей
    * @param map пещера
@@ -76,10 +76,10 @@ class Cave {
    */
   int FindNeighboursCount(Matrix &map, int rowPos, int colPos);
 
-  Matrix matrix_{}; ///< Матрица пещеры
-  double chance_to_spawn_{}; ///< Шанс на спавн
-  int birth_limit_{}; ///< Лимит на рождение
-  int death_limit_{}; ///< Лимит на смерть
+  Matrix matrix_{};           ///< Матрица пещеры
+  double chance_to_spawn_{};  ///< Шанс на спавн
+  int birth_limit_{};         ///< Лимит на рождение
+  int death_limit_{};         ///< Лимит на смерть
 };
 
 }  // namespace s21
