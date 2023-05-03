@@ -19,14 +19,33 @@ struct Location {
   }
 };
 
+/**
+ * @brief Класс для нахождения пути в лабиринте
+ */
 class MazeSolver {
  public:
-  MazeSolver() = delete;
-  ~MazeSolver() = delete;
+  MazeSolver() = delete;  ///< Дефолтный конструктор недоступен
+  ~MazeSolver() = delete;  ///< Дефолтный деструктор недоступен
+  /**
+   * @brief Решения лабиринта
+   * @details Путь находится методом правой руки (придерживаясь правой стены)
+   * @param begin начальная позиция
+   * @param end конечная позиция
+   * @param maze_ сам лабиринт
+   * @return вектор локаций - точки, через которые нужно пройти, чтобы дойти из
+   * точки begin в точку end
+   */
   static std::vector<Location> SolveMaze(Location begin, Location end,
                                          const Maze &maze_);
 
  private:
+  /**
+   * @brief проверка стены впереди
+   * @param current настоящая позиция
+   * @param turn в какую сторону в данный момент направлен взгляд пути
+   * @param matrix_ матрица, описывающая стены лабиринта
+   * @return результат проверки (true - стена есть, false - стены нет)
+   */
   static bool CheckForwardWall(Location current, Location turn, Matrix matrix_);
 };
 
