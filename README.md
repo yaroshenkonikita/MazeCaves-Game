@@ -54,7 +54,7 @@
 <div class="image">
     <img src="src/images/open-save-generate-iterate-cave.gif" width="80%">
 </div>
-</center>
+</center><br/>
 
 В приложении Пещеры есть меню настроек для генерации:
 - Лимит возраждения
