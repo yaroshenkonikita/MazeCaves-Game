@@ -71,6 +71,7 @@ dist: clean
 
 dvi:
 	@doxygen Doxyfile
+	@cp -r images $(DOCUMENTATION)/html
 	@$(OPEN) $(DOCUMENTATION)/html/index.html
 
 clean:

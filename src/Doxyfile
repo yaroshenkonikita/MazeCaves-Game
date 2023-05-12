@@ -915,7 +915,8 @@ INPUT                  = MazeCaves/CaveView/cave_view.h \
                          MazeCaves/Maze/maze.h \
                          MazeCaves/Maze/maze_solver.h \
                          MazeCaves/View/OpenGLWidget/gl_override.h \
-                         MazeCaves/View/application_view.h
+                         MazeCaves/View/application_view.h \
+                         README_DOXYGEN.md
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1129,7 +1130,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE = README.md
+USE_MDFILE_AS_MAINPAGE = README_DOXYGEN.md
 
 # The Fortran standard specifies that for fixed formatted Fortran code all
 # characters from position 72 are to be considered as comment. A common
